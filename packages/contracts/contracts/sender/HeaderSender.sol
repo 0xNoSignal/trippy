@@ -6,13 +6,9 @@ import {AxiomV2Client} from "./AxiomV2Client.sol";
 import {HyperlaneMessageSender} from "./HyperlaneMessageSender.sol";
 import {IGateWay} from "./interfaces/IGateWay.sol";
 import {Bytes32ToString} from "./helpers/Bytes32ToString.sol";
-import {IAxiomV2State} from "./interfaces/core/IAxiomV2State.sol";
+import {IAxiomV2State} from "../axiom-v2-contracts/contracts/interfaces/core/IAxiomV2State.sol";
 
-contract HeaderSender is
-    BasicMessageSender,
-    AxiomV2Client,
-    HyperlaneMessageSender
-{
+contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
     event CCIPMessageSent();
     IGateWay public gateway;
     IAxiomV2State public headerverifier;
@@ -22,8 +18,7 @@ contract HeaderSender is
         address _link,
         address _outbox,
         address _gateway,
-        address _headerverifier,
-        uint64 _callbackSourceChainId
+        address _headerverifier
     ) BasicMessageSender(_router, _link) HyperlaneMessageSender(_outbox) {
         gateway = IGateWay(_gateway);
         headerverifier = IAxiomV2State(_headerverifier);
@@ -41,17 +36,17 @@ contract HeaderSender is
         uint32 numFinal,
         bool bridge
     ) public {
-        bytes pmmr = headerverifier.historicalRoots[
+        bytes memory pmmr = headerverifier.historicalRoots[
             keccak256(abi.encodePacked(prevHash, root, numFinal))
         ];
 
         // use CCIP - arby goerli
         if (bool == 0) {
-            sendMessage(6101244977088475029, receiver, pmmr);
+            sendMessage(6101244977088475029, address(0), pmmr);
         }
         // use Hyperlane
         else if (bool == 1) {
-            sendViaHyperlane(1442, receiver, pmmr);
+            sendViaHyperlane(1442, address(0), pmmr);
         }
     }
 }
