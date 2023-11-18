@@ -78,7 +78,7 @@ contract MsgSender is
         if (destinationChain == 11155111) {
             sendMessage(11155111, RECEIVER_ADDRESS, amount); // CCIP
         } else {
-            sendString(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
+            sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
         }
     }
 

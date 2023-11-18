@@ -19,7 +19,7 @@ contract HyperlaneMessageSender {
     }
 
     // is string memory instead of calldata memory fine?
-    function sendString(
+    function sendViaHyperlane(
         uint32 _destinationDomain,
         bytes32 _recipient,
         bytes calldata messageBody
