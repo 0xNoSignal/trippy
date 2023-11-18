@@ -23,7 +23,7 @@ const main = async function () {
 
   await gateway.waitForDeployment();
 
-  console.log(`Gateway deployed at ${gateway.address}`);
+  console.log(`Gateway deployed at ${await gateway.getAddress()}`);
 
   let msgsenderarg: any = [];
 
@@ -44,17 +44,17 @@ const main = async function () {
   const msgsender = await ethers.deployContract("MsgSender", msgsenderarg);
   await msgsender.waitForDeployment();
 
-  console.log(`Msgsender deployed at ${msgsender.address}`);
+  console.log(`Msgsender deployed at ${await msgsender.getAddress()}`);
 
   console.log("Verifying Gateway.... ");
   await hre.run("verify:verify", {
-    address: gateway.address,
+    address: await gateway.getAddress(),
     constructorArguments: gatewayargs,
   });
 
   console.log("Verifying Msgsender.... ");
   await hre.run("verify:verify", {
-    address: msgsender.address,
+    address: await msgsender.getAddress(),
     constructorArguments: msgsenderarg,
   });
 };

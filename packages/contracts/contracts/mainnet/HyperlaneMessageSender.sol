@@ -11,7 +11,7 @@ contract HyperlaneMessageSender {
     event SentMessage(
         uint32 destinationDomain,
         bytes32 recipient,
-        string message
+        bytes message
     );
 
     constructor(address _outbox) {
@@ -19,12 +19,26 @@ contract HyperlaneMessageSender {
     }
 
     // is string memory instead of calldata memory fine?
-    function sendString(
+    function sendViaHyperlane(
         uint32 _destinationDomain,
         bytes32 _recipient,
-        string memory _message
+        bytes calldata messageBody
     ) public {
-        outbox.dispatch(_destinationDomain, _recipient, bytes(_message));
-        emit SentMessage(_destinationDomain, _recipient, _message);
+        uint256 fee = outbox.quoteDispatch(
+            _destinationDomain,
+            _recipient,
+            messageBody
+        );
+        require(
+            address(this).balance >= fee,
+            "Insufficient contract balance to cover fee"
+        );
+
+        outbox.dispatch{value: fee}(
+            _destinationDomain,
+            _recipient,
+            messageBody
+        );
+        emit SentMessage(_destinationDomain, _recipient, messageBody);
     }
 }
