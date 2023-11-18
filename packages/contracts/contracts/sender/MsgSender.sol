@@ -76,15 +76,15 @@ contract MsgSender is
         uint256 destinationChain = uint256(axiomResults[2]);
 
         if (destinationChain == 11155111) {
-            sendMessage(11155111, RECEIVER_ADDRESS, amount); // CCIP
+            sendMessage(11155111, RECEIVER_ADDRESS, all); // CCIP
         } else {
             sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
         }
     }
 
     function combineAddressAndAmount(
-        bytes32 calldata to,
-        bytes32 calldata amount
+        bytes32 to,
+        bytes32 amount
     ) internal returns (bytes memory) {
         address a = address(uint160(uint256(to)));
         uint256 b = uint256(amount);
