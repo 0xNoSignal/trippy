@@ -41,14 +41,6 @@ contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
     ) public {
         bytes32 pmmr = headerverifier.historicalRoots(10064896);
 
-        // // use CCIP - arby goerli
-        // if (bridge == true) {
-        //     sendMessage(
-        //         6101244977088475029,
-        //         address(0),
-        //         Bytes32ToBytesLib.convert(pmmr)
-        //     );
-        // }
         // use Hyperlane
         if (bridge == false) {
             sendViaHyperlane(
