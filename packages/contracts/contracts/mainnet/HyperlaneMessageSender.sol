@@ -29,7 +29,16 @@ contract HyperlaneMessageSender {
             _recipient,
             messageBody
         );
-        outbox.dispatch(_destinationDomain, _recipient, messageBody);
+        require(
+            address(this).balance >= fee,
+            "Insufficient contract balance to cover fee"
+        );
+
+        outbox.dispatch{value: fee}(
+            _destinationDomain,
+            _recipient,
+            messageBody
+        );
         emit SentMessage(_destinationDomain, _recipient, messageBody);
     }
 }
