@@ -17,7 +17,8 @@ const config: HardhatUserConfig = {
       zkEVMTestnet: process.env.ETHERSCAN_ZK_EVM!,
       xdai: process.env.GNOSISSCAN_API_KEY!,
       optimisticGoerli: process.env.OPSCAN_API_KEY!,
-      baseGoerli: process.env.BASEGOERLI_API_KEY!
+      baseGoerli: process.env.BASEGOERLI_API_KEY!, 
+      polygonZkEVMTestnet: process.env.POLYGONZKEVMSCAN_API_KEY!
     },
   },
   networks: {

@@ -14,10 +14,10 @@ export const goerli = {
   world_action_id: "trippy",
   ccip_router: "0xC41759b5E59E276c6d1B00712a256F00F5703048",
   link_token: "0xBd5307B0Bf573E3F2864Af960167b24Aa346952b",
-  axiomV2QueryAddress: "0xBd5307B0Bf573E3F2864Af960167b24Aa346952b",
+  axiomV2QueryAddress: "0xf15cc7b983749686cd1ecca656c3d3e46407dc1f",
   HyperlaneOutbox: "0x49cfd6Ef774AcAb14814D699e3F7eE36Fdfba932",
   axiomCallbackQuerySchema:
-    "0x752c06e58ed9a96fc406a8834dcb781163693c02b127cc7a45d6bfc901765ce8",
+    "0x0000000000000000000000000000000000000000000000000000000000000000",
   gateway_deployment: "0x7E10829CDd5A062D9B95dB13eCb96076cfa56E4E",
   callbackSourceChainId: 5,
 };
@@ -56,7 +56,7 @@ export const zkEVMTestnet = {
   shoyubashi: "0x0000000000000000000000000000000000000000",
   HyperlaneInbox: "0x598facE78a4302f11E3de0bee1894Da0b2Cb71F8",
   CCIPRouter: "0x0000000000000000000000000000000000000000",
-  MsgReceiver: "0xEC6c574E296e5553F7C59f01e122Abc0340f0D4E"
+  MsgReceiver: "0x14713e1c4A714F4b75af6087533d412088C6B352"
 };
 
 export const optestnet = {

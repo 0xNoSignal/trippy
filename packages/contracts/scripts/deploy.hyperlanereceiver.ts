@@ -1,6 +1,6 @@
 import { sleep } from "../constants/sleep";
 import hre, { network, ethers } from "hardhat";
-import { gnosis, arbygoerli, optestnet, base } from "../constants/constants";
+import { gnosis, arbygoerli, optestnet, base, zkEVMTestnet } from "../constants/constants";
 
 const main = async function () {
   const chainId = network.config.chainId;
@@ -16,6 +16,8 @@ const main = async function () {
     HyperlaneMessageReceiverargs = [optestnet.HyperlaneMailbox]
   } else if (chainId == 84531) {
     HyperlaneMessageReceiverargs = [base.HyperlaneMailbox]
+  } else if (chainId == 1442) {
+    HyperlaneMessageReceiverargs = [zkEVMTestnet.HyperlaneInbox]
   }
 
   const HyperlaneMessageReceiver = await ethers.deployContract(

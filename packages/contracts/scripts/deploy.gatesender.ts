@@ -37,6 +37,12 @@ const main = async function () {
       goerli.world_app_id,
       goerli.world_action_id,
     ]
+  } else if (chainId == 84531) {
+    gatewayargs = [
+      goerli.world_address,
+      goerli.world_app_id,
+      goerli.world_action_id,
+    ]
   }
 
   const gateway = await ethers.deployContract("Gateway", gatewayargs);
@@ -90,6 +96,8 @@ const main = async function () {
   } else if (process.env.DESTINATION == "basegoerli") {
     msgsenderarg.push(base.MsgReceiver)
   }
+
+  console.log(msgsenderarg)
 
   const msgsender = await ethers.deployContract("MsgSender", msgsenderarg);
   await msgsender.waitForDeployment();
