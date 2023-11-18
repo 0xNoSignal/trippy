@@ -7,7 +7,6 @@ import {HyperlaneMessageSender} from "./HyperlaneMessageSender.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 import {IGateWay} from "./interfaces/IGateWay.sol";
 import {Bytes32ToString} from "./helpers/Bytes32ToString.sol";
-import {Bytes32ToBytesLib} from "./helpers/Bytes32ToBytes.sol";
 
 contract MsgSender is
     BasicMessageSender,
@@ -15,7 +14,6 @@ contract MsgSender is
     HyperlaneMessageSender
 {
     using Bytes32ToString for bytes32;
-    using Bytes32ToBytesLib for bytes32;
 
     enum Bridges {
         Hyperlane,
@@ -75,12 +73,20 @@ contract MsgSender is
             axiomResults[1]
         );
 
-        uint256 destinationChain = uint256(axiomResults[2]);
+        uint32 destinationChain = uint32(uint256(axiomResults[2]));
 
         if (destinationChain == 11155111) {
-            sendMessage(11155111, RECEIVER_ADDRESS, all); // CCIP
+            sendMessage(
+                11155111,
+                RECEIVER_ADDRESS,
+                string(abi.encodePacked(all))
+            ); // CCIP
         } else {
-            sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
+            sendViaHyperlane(
+                destinationChain,
+                bytes32(uint256(uint160(RECEIVER_ADDRESS)) << 96),
+                all
+            ); // Hyperlane
         }
     }
 
