@@ -12,11 +12,12 @@ contract Gateway {
 
     event ProfileVerified(address indexed user);
     error InvalidNullifier();
-    event Deposited(address sender, uint256 amount);
+    event Deposited(address sender, uint256 amount, uint256 destinationChainId);
 
     struct Deposit {
         uint256 amount;
         uint256 blockNumber;
+        uint256 destinationChainId;
     }
 
     IWorldID internal worldId;
@@ -68,16 +69,18 @@ contract Gateway {
 
     function depositCapital(
         uint256 amount,
-        IERC20 asset
+        IERC20 asset,
+        uint256 destinationChainId
     ) public onlyVerifiedUser {
         // deposit capital
         IERC20(asset).transferFrom(msg.sender, address(this), amount);
         Deposit memory newDeposit;
         newDeposit.amount = amount;
         newDeposit.blockNumber = block.number;
+        newDeposit.destinationChainId = destinationChainId;
         deposits[msg.sender] = newDeposit;
 
-        emit Deposited(msg.sender, amount);
+        emit Deposited(msg.sender, amount, destinationChainId);
     }
 
     function getDeposits(
@@ -86,14 +89,19 @@ contract Gateway {
         return deposits[_calleraddr];
     }
 
-    function depositJustForTesting(uint256 amount, IERC20 asset) public {
+    function depositJustForTesting(
+        uint256 amount,
+        IERC20 asset,
+        uint256 destinationChainId
+    ) public {
         // deposit capital
         IERC20(asset).transferFrom(msg.sender, address(this), amount);
         Deposit memory newDeposit;
         newDeposit.amount = amount;
         newDeposit.blockNumber = block.number;
+        newDeposit.destinationChainId = destinationChainId;
         deposits[msg.sender] = newDeposit;
 
-        emit Deposited(msg.sender, amount);
+        emit Deposited(msg.sender, amount, destinationChainId);
     }
 }
