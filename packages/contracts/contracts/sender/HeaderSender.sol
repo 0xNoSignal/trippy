@@ -7,11 +7,14 @@ import {HyperlaneMessageSender} from "./HyperlaneMessageSender.sol";
 import {IGateWay} from "./interfaces/IGateWay.sol";
 import {Bytes32ToString} from "./helpers/Bytes32ToString.sol";
 import {IAxiomV2State} from "../axiom-v2-contracts/contracts/interfaces/core/IAxiomV2State.sol";
+import {Bytes32ToBytesLib} from "./helpers/Bytes32ToBytes.sol";
 
 contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
     event CCIPMessageSent();
     IGateWay public gateway;
     IAxiomV2State public headerverifier;
+
+    using Bytes32ToBytesLib for bytes32;
 
     constructor(
         address _router,
@@ -38,16 +41,20 @@ contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
     ) public {
         bytes32 pmmr = headerverifier.historicalRoots(10064896);
 
-        // use CCIP - arby goerli
-        if (bridge == true) {
-            sendMessage(6101244977088475029, address(0), pmmr);
-        }
+        // // use CCIP - arby goerli
+        // if (bridge == true) {
+        //     sendMessage(
+        //         6101244977088475029,
+        //         address(0),
+        //         Bytes32ToBytesLib.convert(pmmr)
+        //     );
+        // }
         // use Hyperlane
-        else if (bridge == false) {
+        if (bridge == false) {
             sendViaHyperlane(
                 1442,
-                bytes32(uint256(uint160(address(0))) << 96),
-                pmmr
+                bytes32(uint256(uint160(address(0)))),
+                Bytes32ToBytesLib.convert(pmmr)
             );
         }
     }

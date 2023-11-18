@@ -7,6 +7,7 @@ import {HyperlaneMessageSender} from "./HyperlaneMessageSender.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 import {IGateWay} from "./interfaces/IGateWay.sol";
 import {Bytes32ToString} from "./helpers/Bytes32ToString.sol";
+import {Bytes32ToBytesLib} from "./helpers/Bytes32ToBytes.sol";
 
 contract MsgSender is
     BasicMessageSender,
@@ -14,6 +15,7 @@ contract MsgSender is
     HyperlaneMessageSender
 {
     using Bytes32ToString for bytes32;
+    using Bytes32ToBytesLib for bytes32;
 
     enum Bridges {
         Hyperlane,
