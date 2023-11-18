@@ -18,11 +18,11 @@ const main = async function () {
 
   await msgreceiver.waitForDeployment();
 
-  console.log(`MsgReceiver deployed at ${msgreceiver.address}`);
+  console.log(`MsgReceiver deployed at ${await msgreceiver.getAddress()}`);
 
   console.log("Verifying MsgReceiver.... ");
   await hre.run("verify:verify", {
-    address: msgreceiver.address,
+    address: await msgreceiver.getAddress(),
     constructorArguments: msgreceiverargs,
   });
 };

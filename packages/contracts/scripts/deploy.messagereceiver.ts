@@ -1,11 +1,16 @@
 import hre, { network, ethers } from "hardhat";
-import { mumbai } from "../constants/constants";
+import { mumbai, arbygoerli } from "../constants/constants";
 
 const main = async function () {
   const chainId = network.config.chainId;
   console.log(chainId);
-  if (chainId != 80001) {
-    throw new Error("Wrong Network")
+
+  let ccip_router;
+
+  if (chainId == 80001) {
+    ccip_router = mumbai.ccip_router;
+  } else if (chainId == 421613) {
+    ccip_router = arbygoerli.ccip_router
   }
 
   const BasicMessageReceiverargs: any = [mumbai.ccip_router];

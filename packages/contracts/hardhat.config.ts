@@ -11,6 +11,7 @@ const config: HardhatUserConfig = {
       mainnet: process.env.ETHERSCAN_API_KEY!,
       polygonMumbai: process.env.POLYGONSCAN_API_KEY!,
       goerli: process.env.ETHERSCAN_API_KEY!,
+      arbygoerli: process.env.ARBYSCAN_API_KEY!
     },
   },
   networks: {
@@ -29,6 +30,11 @@ const config: HardhatUserConfig = {
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 80001,
     },
+    arbygoerli: {
+      url: process.env.ARBITRUM_TESTNET_RPC_URL || "", 
+      accounts: [process.env.PRIVATE_KEY || ""],
+      chainId: 421613,
+    }
   },
 };
 

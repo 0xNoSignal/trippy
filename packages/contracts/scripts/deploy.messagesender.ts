@@ -4,9 +4,6 @@ import { goerli } from "../constants/constants";
 const main = async function () {
   const chainId = network.config.chainId;
   console.log(chainId);
-  if (chainId != 5) {
-    throw new Error("Wrong Network")
-  }
 
   const BasicMessageSenderargs: any = [goerli.ccip_router];
 
