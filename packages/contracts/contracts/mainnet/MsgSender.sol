@@ -14,6 +14,7 @@ contract MsgSender is
     HyperlaneMessageSender
 {
     using Bytes32ToString for bytes32;
+    address RECEIVER_ADDRESS;
 
     enum Bridges {
         Hyperlane,
@@ -32,7 +33,8 @@ contract MsgSender is
         address _outbox,
         bytes32 _axiomCallbackQuerySchema,
         address _gateway,
-        uint64 _callbackSourceChainId
+        uint64 _callbackSourceChainId,
+        address _receiverAddress
     )
         BasicMessageSender(_router, _link)
         AxiomV2Client(_axiomV2QueryAddress)
@@ -41,6 +43,7 @@ contract MsgSender is
         callbackSourceChainId = _callbackSourceChainId;
         axiomCallbackQuerySchema = _axiomCallbackQuerySchema;
         gateway = IGateWay(_gateway);
+        RECEIVER_ADDRESS = _receiverAddress;
     }
 
     function _axiomV2Callback(
@@ -52,24 +55,32 @@ contract MsgSender is
         bytes calldata callbackExtraData
     ) internal override {
         require(
-            gateway.getDeposits(callerAddr).amount == 0,
-            "No deposits with this address"
-        );
-
-        require(
             sourceChainId == callbackSourceChainId,
             "Source chain ID mismatch"
         );
+        require(axiomResults.length > 2, "Insufficient data");
 
-        string memory convertedString = axiomResults[0].bytes32ToString();
-
-        // 11155111 - Sepolia
-        sendMessage(11155111, callerAddr, convertedString);
-        sendString(
-            11155111,
-            bytes32(uint256(uint160(callerAddr)) << 96),
-            convertedString
+        bytes memory all = combineAddressAndAmount(
+            axiomResults[0],
+            axiomResults[1]
         );
+
+        uint256 destinationChain = uint256(axiomResults[2]);
+
+        if (destinationChain == 11155111) {
+            sendMessage(11155111, RECEIVER_ADDRESS, amount); // CCIP
+        } else {
+            sendString(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
+        }
+    }
+
+    function combineAddressAndAmount(
+        bytes32 calldata to,
+        bytes32 calldata amount
+    ) internal returns (bytes memory) {
+        address a = address(uint160(uint256(to)));
+        uint256 b = uint256(amount);
+        return abi.encodePacked(a, b);
     }
 
     function _validateAxiomV2Call(

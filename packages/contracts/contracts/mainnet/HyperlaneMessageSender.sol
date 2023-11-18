@@ -11,7 +11,7 @@ contract HyperlaneMessageSender {
     event SentMessage(
         uint32 destinationDomain,
         bytes32 recipient,
-        string message
+        bytes message
     );
 
     constructor(address _outbox) {
@@ -22,9 +22,9 @@ contract HyperlaneMessageSender {
     function sendString(
         uint32 _destinationDomain,
         bytes32 _recipient,
-        string memory _message
+        bytes calldata messageBody
     ) public {
-        outbox.dispatch(_destinationDomain, _recipient, bytes(_message));
-        emit SentMessage(_destinationDomain, _recipient, _message);
+        outbox.dispatch(_destinationDomain, _recipient, messageBody);
+        emit SentMessage(_destinationDomain, _recipient, messageBody);
     }
 }
