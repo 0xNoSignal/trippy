@@ -73,12 +73,20 @@ contract MsgSender is
             axiomResults[1]
         );
 
-        uint256 destinationChain = uint256(axiomResults[2]);
+        uint32 destinationChain = uint32(uint256(axiomResults[2]));
 
         if (destinationChain == 11155111) {
-            sendMessage(11155111, RECEIVER_ADDRESS, all); // CCIP
+            sendMessage(
+                11155111,
+                RECEIVER_ADDRESS,
+                string(abi.encodePacked(all))
+            ); // CCIP
         } else {
-            sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
+            sendViaHyperlane(
+                destinationChain,
+                bytes32(uint256(uint160(RECEIVER_ADDRESS)) << 96),
+                all
+            ); // Hyperlane
         }
     }
 
