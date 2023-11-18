@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import hre, { network, ethers } from "hardhat";
-import { sepolia, goerli } from "../constants/constants";
+import { sepolia, goerli, zkEVMTestnet } from "../constants/constants";
 import { ethers as e } from "ethers";
 
 const main = async function () {
@@ -27,18 +27,29 @@ const main = async function () {
 
   let msgsenderarg: any = [];
 
+  /**
+   *    address _router,
+        address _link,
+        address _axiomV2QueryAddress,
+        address _outbox,
+        bytes32 _axiomCallbackQuerySchema,
+        address _gateway,
+        uint64 _callbackSourceChainId,
+        address _receiverAddress
+   */
+
   if (chainId == 11155111) {
     msgsenderarg = [1, 2, 3];
   } else if (chainId == 5) {
     msgsenderarg = [
       goerli.ccip_router,
-      "0x0000000000000000000000000000000000000000",
+      goerli.link_token,
       goerli.axiomV2QueryAddress,
       goerli.HyperlaneOutbox,
       goerli.axiomCallbackQuerySchema,
       goerli.gateway_deployment,
       5,
-      "0x0000000000000000000000000000000000000000",
+      zkEVMTestnet.MsgReceiver,
     ];
   }
 
