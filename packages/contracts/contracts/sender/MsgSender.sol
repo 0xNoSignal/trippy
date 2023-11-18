@@ -84,7 +84,7 @@ contract MsgSender is
         } else {
             sendViaHyperlane(
                 destinationChain,
-                bytes32(uint256(uint160(RECEIVER_ADDRESS)) << 96),
+                bytes32(uint256(uint160(RECEIVER_ADDRESS))),
                 all
             ); // Hyperlane
         }

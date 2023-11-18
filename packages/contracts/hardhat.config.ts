@@ -6,9 +6,6 @@ dotenv.config({
   path: __dirname + "/.env",
 });
 
-console.log(process.env.ETHERSCAN_API_KEY);
-console.log(process.env.POLYGONSCAN_API_KEY);
-
 const config: HardhatUserConfig = {
   solidity: "0.8.20",
   etherscan: {
@@ -17,7 +14,7 @@ const config: HardhatUserConfig = {
       polygonMumbai: process.env.POLYGONSCAN_API_KEY!,
       goerli: process.env.ETHERSCAN_API_KEY!,
       arbygoerli: process.env.ARBYSCAN_API_KEY!,
-      zkEVMTestnet: process.env.ETHERSCAN_ZK_EVM!,
+      polygonZkEVMTestnet: process.env.ETHERSCAN_ZK_EVM!,
     },
   },
   networks: {
