@@ -13,13 +13,23 @@ const config: HardhatUserConfig = {
       mainnet: process.env.ETHERSCAN_API_KEY!,
       polygonMumbai: process.env.POLYGONSCAN_API_KEY!,
       goerli: process.env.ETHERSCAN_API_KEY!,
-      arbygoerli: process.env.ARBYSCAN_API_KEY!,
+      arbitrumGoerli: process.env.ARBYSCAN_API_KEY!,
       zkEVMTestnet: process.env.ETHERSCAN_ZK_EVM!,
       xdai: process.env.GNOSISSCAN_API_KEY!,
       optimisticGoerli: process.env.OPSCAN_API_KEY!,
       baseGoerli: process.env.BASEGOERLI_API_KEY!, 
-      polygonZkEVMTestnet: process.env.POLYGONZKEVMSCAN_API_KEY!
+      polygonZkEVMTestnet: process.env.POLYGONZKEVMSCAN_API_KEY!,
+      celotestnet: process.env.CELOSCAN_API_KEY!
     },
+    customChains: [
+      {
+        network: "celotestnet",
+        chainId: 44787,
+        urls: {
+          apiURL: process.env.CELOSCAN_API_KEY!,
+          browserURL: "https://alfajores.celoscan.io/"
+        }
+      }]
   },
   networks: {
     goerli: {
@@ -58,9 +68,13 @@ const config: HardhatUserConfig = {
       chainId: 84531,
     },
     celotestnet: {
-      url: process.env.BASEGOERLI_RPC_URL || "",
+      url: process.env.CELOTESTNET_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 44787,
+    }, lineatestnet: {
+      url: process.env.LINEATESTNET_RPC_URL || "",
+      accounts: [process.env.PRIVATE_KEY || ""],
+      chainId: 59140,
     }
   },
 };

@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import hre, { network, ethers } from "hardhat";
-import { sepolia, goerli, zkEVMTestnet, optestnet, gnosis, arbygoerli, base } from "../constants/constants";
+import { sepolia, goerli, zkEVMTestnet, optestnet, gnosis, arbygoerli, base, celotestnet } from "../constants/constants";
 import { ethers as e } from "ethers";
 import { sleep } from "../constants/sleep";
 import dotenv from 'dotenv';
@@ -95,6 +95,8 @@ const main = async function () {
     msgsenderarg.push(optestnet.MsgReceiver)
   } else if (process.env.DESTINATION == "basegoerli") {
     msgsenderarg.push(base.MsgReceiver)
+  } else if (process.env.DESTINATION == "celotestnet") {
+    msgsenderarg.push(celotestnet.MsgReceiver)
   }
 
   console.log(msgsenderarg)

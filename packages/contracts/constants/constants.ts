@@ -68,5 +68,6 @@ export const optestnet = {
 };
 
 export const celotestnet = {
-  HyperlaneMailbox: "0xEf9F292fcEBC3848bF4bB92a96a04F9ECBb78E59"
+  HyperlaneMailbox: "0xEf9F292fcEBC3848bF4bB92a96a04F9ECBb78E59",
+  MsgReceiver: "0x14713e1c4A714F4b75af6087533d412088C6B352"
 }
