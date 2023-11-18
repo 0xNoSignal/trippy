@@ -66,3 +66,7 @@ export const optestnet = {
   HyperlaneMailbox: "0xB5f021728Ea6223E3948Db2da61d612307945eA2",
   MsgReceiver: "0x5c6602be3b6684bbDf2D13caA1f9541d83C35812",
 };
+
+export const celotestnet = {
+  HyperlaneMailbox: "0xEf9F292fcEBC3848bF4bB92a96a04F9ECBb78E59"
+}

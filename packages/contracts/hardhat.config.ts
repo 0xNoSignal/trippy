@@ -57,6 +57,11 @@ const config: HardhatUserConfig = {
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 84531,
     },
+    celotestnet: {
+      url: process.env.BASEGOERLI_RPC_URL || "",
+      accounts: [process.env.PRIVATE_KEY || ""],
+      chainId: 44787,
+    }
   },
 };
 
