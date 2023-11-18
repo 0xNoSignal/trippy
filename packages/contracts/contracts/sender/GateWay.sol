@@ -87,6 +87,20 @@ contract Gateway {
         emit Deposited(msg.sender, amount, destinationChainId);
     }
 
+    function depositCapitalETH(
+        uint256 destinationChainId
+    ) public payable onlyVerifiedUser {
+        require(msg.value > 0, "Incorrect amount");
+
+        Deposit memory newDeposit;
+        newDeposit.amount = msg.value;
+        newDeposit.blockNumber = block.number;
+        newDeposit.destinationChainId = destinationChainId;
+        deposits[msg.sender] = newDeposit;
+
+        emit Deposited(msg.sender, msg.value, destinationChainId);
+    }
+
     function getDeposits(
         address _calleraddr
     ) public view returns (Deposit memory deposit) {
@@ -107,5 +121,19 @@ contract Gateway {
         deposits[msg.sender] = newDeposit;
 
         emit Deposited(msg.sender, amount, destinationChainId);
+    }
+
+    function depositJustForTestingETH(
+        uint256 destinationChainId
+    ) public payable {
+        require(msg.value > 0, "Incorrect amount");
+        // deposit capital
+        Deposit memory newDeposit;
+        newDeposit.amount = msg.value;
+        newDeposit.blockNumber = block.number;
+        newDeposit.destinationChainId = destinationChainId;
+        deposits[msg.sender] = newDeposit;
+
+        emit Deposited(msg.sender, msg.value, destinationChainId);
     }
 }
