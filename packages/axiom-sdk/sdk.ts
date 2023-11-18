@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 import {
   Axiom,
   QueryV2,
@@ -34,13 +35,15 @@ const axiom = new Axiom({
 const query = (axiom.query as QueryV2).new();
 
 const txHash =
-  "0xd922e8b8d71549550110c6fd1508d981eb536a85104934593cf1408221b9b414";
+  "0xec387f7e4203d20b8b00295d2dc047dccde581f399c9f58822542d202f80317b";
 
-const depositEventSchema = getEventSchema("Deposited(address,uint256)");
+const depositEventSchema = getEventSchema("Deposited(address,uint256,uint256)");
+
+console.log("Deposit Event Schema:", depositEventSchema);
 // !!! - this should index into deposits and find the blockheader in the struct
 const senderQuery = buildReceiptSubquery(txHash)
-  .log(4) // event
-  .topic(2) // event schema
+  .log(1) // event
+  .topic(1) // event sender
   .eventSchema(depositEventSchema);
 
 console.log("Appending Receipt Subquery:", senderQuery);
@@ -48,22 +51,22 @@ console.log("Appending Receipt Subquery:", senderQuery);
 query.appendDataSubquery(senderQuery);
 
 const amountSubQuery = buildReceiptSubquery(txHash)
-  .log(4) // event
-  .topic(3) // to field
+  .log(1) // event
+  .topic(2) // amount field
   .eventSchema(depositEventSchema);
 
 console.log("Appending Receipt Subquery:", amountSubQuery);
 query.appendDataSubquery(amountSubQuery);
 
 const chainIdQuery = buildReceiptSubquery(txHash)
-  .log(4) // event
-  .topic(4) // chainid field
+  .log(1) // event
+  .topic(3) // chainid field
   .eventSchema(depositEventSchema);
 
 console.log("Appending Receipt Subquery:", chainIdQuery);
 query.appendDataSubquery(chainIdQuery);
 
-const exampleClientAddr = "0x3A057a3864901Dbab63f5512c7f58d76e1eb3316";
+const exampleClientAddr = "0xF4b4835e929DA5AB06579a81A817Ef8a3Bc7Bf58";
 const callback: AxiomV2Callback = {
   target: exampleClientAddr,
   extraData: bytes32(0),
@@ -87,17 +90,20 @@ async function main() {
   const schemaID = query.getDataQueryHash();
   console.log(schemaID);
 
-  // const queryId = await query.sendOnchainQuery(
-  //   paymentAmt,
-  //   (receipt: ethers.ContractTransactionReceipt) => {
-  //     // You can do something here once you've received the receipt
-  //     console.log("receipt", receipt);
-  //   }
-  // );
-  // console.log(
-  //   "View your Query on Axiom Explorer:",
-  //   `https://explorer.axiom.xyz/v2/goerli/mock/query/${queryId}`
-  // );
+  const queryId = await query.sendOnchainQuery(
+    paymentAmt,
+    (receipt: ethers.ContractTransactionReceipt) => {
+      // You can do something here once you've received the receipt
+      console.log("receipt", receipt);
+    }
+  );
+  console.log(
+    "View your Query on Axiom Explorer:",
+    `https://explorer.axiom.xyz/v2/goerli/mock/query/${queryId}`
+  );
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

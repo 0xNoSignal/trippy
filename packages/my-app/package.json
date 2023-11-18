@@ -1,0 +1,31 @@
+{
+  "name": "trippy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@web3modal/wagmi": "^3.3.2",
+    "@worldcoin/idkit": "^0.5.1",
+    "ethers": "^5.7.1",
+    "framer-motion": "^10.16.5",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "viem": "^1.19.3",
+    "wagmi": "^1.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}

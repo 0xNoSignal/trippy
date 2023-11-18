@@ -12,7 +12,11 @@ contract Gateway {
 
     event ProfileVerified(address indexed user);
     error InvalidNullifier();
-    event Deposited(address sender, uint256 amount, uint256 destinationChainId);
+    event Deposited(
+        address indexed sender,
+        uint256 indexed amount,
+        uint256 indexed destinationChainId
+    );
 
     struct Deposit {
         uint256 amount;
