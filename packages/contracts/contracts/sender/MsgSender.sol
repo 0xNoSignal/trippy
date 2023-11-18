@@ -82,11 +82,7 @@ contract MsgSender is
                 string(abi.encodePacked(all))
             ); // CCIP
         } else {
-            sendViaHyperlane(
-                destinationChain,
-                bytes32(uint256(uint160(RECEIVER_ADDRESS)) << 96),
-                all
-            ); // Hyperlane
+            sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
         }
     }
 
