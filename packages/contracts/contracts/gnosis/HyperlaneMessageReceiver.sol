@@ -5,13 +5,17 @@ pragma solidity ^0.8.4;
 // import "hardhat/console.sol";
 
 import "@hyperlane-xyz/core/contracts/interfaces/IMailbox.sol";
+import "./lib/DecodeLib.sol";
 
 contract HyperlaneMessageReceiver {
+    using DecoderLib for bytes;
+
     IMailbox inbox;
     bytes32 public lastSender;
     string public lastMessage;
 
     event ReceivedMessage(uint32 origin, bytes32 sender, bytes message);
+    event ReceivedDeposit(address from, uint256 amount);
 
     constructor(address _inbox) {
         inbox = IMailbox(_inbox);
@@ -22,8 +26,12 @@ contract HyperlaneMessageReceiver {
         bytes32 _sender,
         bytes calldata _message
     ) external {
-        lastSender = _sender;
-        lastMessage = string(_message);
+        // address sender = address(uint160(uint256(_sender)));
+        //equire(sender === "OTHERCHAIN_ADDRESS", "Invalid sender");
+        (address decodedAddress, uint256 decodedAmount) = _message
+            .decodeAddressAndAmount();
+
         emit ReceivedMessage(_origin, _sender, _message);
+        emit ReceivedDeposit(decodedAddress, decodedAmount);
     }
 }
