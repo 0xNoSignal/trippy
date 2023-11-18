@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.20;
 
 import {BasicMessageSender} from "./BasicMessageSender.sol";
 import {AxiomV2Client} from "./AxiomV2Client.sol";
@@ -73,19 +73,23 @@ contract MsgSender is
             axiomResults[1]
         );
 
-        uint256 destinationChain = uint256(axiomResults[2]);
+        uint32 destinationChain = uint32(uint256(axiomResults[2]));
 
         if (destinationChain == 11155111) {
-            sendMessage(11155111, RECEIVER_ADDRESS, amount); // CCIP
+            // sendMessage(11155111, RECEIVER_ADDRESS, abi.encode(all)); // CCIP
         } else {
-            sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
+            sendViaHyperlane(
+                destinationChain,
+                bytes32(uint256(uint160(RECEIVER_ADDRESS)) << 96),
+                all
+            ); // Hyperlane
         }
     }
 
     function combineAddressAndAmount(
-        bytes32 calldata to,
-        bytes32 calldata amount
-    ) internal returns (bytes memory) {
+        bytes32 to,
+        bytes32 amount
+    ) internal pure returns (bytes memory) {
         address a = address(uint160(uint256(to)));
         uint256 b = uint256(amount);
         return abi.encodePacked(a, b);
