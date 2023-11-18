@@ -25,7 +25,7 @@ contract HyperlaneMessageReceiver {
         uint32 _origin,
         bytes32 _sender,
         bytes calldata _message
-    ) external {
+    ) external payable {
         // address sender = address(uint160(uint256(_sender)));
         //equire(sender === "OTHERCHAIN_ADDRESS", "Invalid sender");
         (address decodedAddress, uint256 decodedAmount) = _message

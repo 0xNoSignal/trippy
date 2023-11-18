@@ -1,11 +1,11 @@
 import hre, { network, ethers } from "hardhat";
-import { gnosis } from "../constants/constants";
+import { gnosis, zkEVMTestnet } from "../constants/constants";
 
 const main = async function () {
   const chainId = network.config.chainId;
   console.log(chainId);
 
-  const msgreceiverargs: any = [
+  let msgreceiverargs: any = [
     gnosis.shoyubashi,
     gnosis.HyperlaneInbox,
     gnosis.CCIPRouter,
@@ -15,6 +15,14 @@ const main = async function () {
     "MsgReceiver",
     msgreceiverargs
   );
+
+  if (chainId === 1442) {
+    msgreceiverargs = [
+      zkEVMTestnet.shoyubashi,
+      zkEVMTestnet.HyperlaneInbox,
+      zkEVMTestnet.CCIPRouter,
+    ];
+  }
 
   await msgreceiver.waitForDeployment();
 
