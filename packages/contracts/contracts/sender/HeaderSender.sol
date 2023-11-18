@@ -36,17 +36,19 @@ contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
         uint32 numFinal,
         bool bridge
     ) public {
-        bytes memory pmmr = headerverifier.historicalRoots[
-            keccak256(abi.encodePacked(prevHash, root, numFinal))
-        ];
+        bytes32 pmmr = headerverifier.historicalRoots(10064896);
 
         // use CCIP - arby goerli
-        if (bool == 0) {
+        if (bridge == true) {
             sendMessage(6101244977088475029, address(0), pmmr);
         }
         // use Hyperlane
-        else if (bool == 1) {
-            sendViaHyperlane(1442, address(0), pmmr);
+        else if (bridge == false) {
+            sendViaHyperlane(
+                1442,
+                bytes32(uint256(uint160(address(0))) << 96),
+                pmmr
+            );
         }
     }
 }
