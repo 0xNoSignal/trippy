@@ -5,7 +5,6 @@ import {BasicMessageSender} from "./BasicMessageSender.sol";
 import {AxiomV2Client} from "./AxiomV2Client.sol";
 import {HyperlaneMessageSender} from "./HyperlaneMessageSender.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
-import {IGateWay} from "./interfaces/IGateWay.sol";
 import {Bytes32ToString} from "./helpers/Bytes32ToString.sol";
 
 contract MsgSender is
@@ -13,6 +12,8 @@ contract MsgSender is
     AxiomV2Client,
     HyperlaneMessageSender
 {
+    event axiom1(bytes indexed all);
+
     using Bytes32ToString for bytes32;
 
     enum Bridges {
@@ -23,7 +24,6 @@ contract MsgSender is
     event CCIPMessageSent();
     uint64 public callbackSourceChainId;
     bytes32 public axiomCallbackQuerySchema;
-    IGateWay public gateway;
     address RECEIVER_ADDRESS;
     address owner;
 
@@ -33,7 +33,6 @@ contract MsgSender is
         address _axiomV2QueryAddress,
         address _outbox,
         bytes32 _axiomCallbackQuerySchema,
-        address _gateway,
         uint64 _callbackSourceChainId,
         address _receiverAddress
     )
@@ -44,7 +43,6 @@ contract MsgSender is
     {
         callbackSourceChainId = _callbackSourceChainId;
         axiomCallbackQuerySchema = _axiomCallbackQuerySchema;
-        gateway = IGateWay(_gateway);
         RECEIVER_ADDRESS = _receiverAddress;
         owner = msg.sender;
     }
@@ -62,16 +60,18 @@ contract MsgSender is
         bytes32[] calldata axiomResults,
         bytes calldata callbackExtraData
     ) internal override {
-        require(
-            sourceChainId == callbackSourceChainId,
-            "Source chain ID mismatch"
-        );
-        require(axiomResults.length > 2, "Insufficient data");
+        // require(
+        //     sourceChainId == callbackSourceChainId,
+        //     "Source chain ID mismatch"
+        // );
+        // require(axiomResults.length > 2, "Insufficient data");
 
         bytes memory all = combineAddressAndAmount(
             axiomResults[0],
             axiomResults[1]
         );
+
+        emit axiom1(all);
 
         uint32 destinationChain = uint32(uint256(axiomResults[2]));
 
@@ -82,11 +82,7 @@ contract MsgSender is
                 string(abi.encodePacked(all))
             ); // CCIP
         } else {
-            sendViaHyperlane(
-                destinationChain,
-                bytes32(uint256(uint160(RECEIVER_ADDRESS))),
-                all
-            ); // Hyperlane
+            sendViaHyperlane(destinationChain, RECEIVER_ADDRESS, all); // Hyperlane
         }
     }
 

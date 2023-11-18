@@ -1,3 +1,4 @@
+import { sleep } from "../constants/sleep";
 import hre, { network, ethers } from "hardhat";
 import { gnosis, zkEVMTestnet } from "../constants/constants";
 

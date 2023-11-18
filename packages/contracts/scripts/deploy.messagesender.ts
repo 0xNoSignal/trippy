@@ -1,3 +1,4 @@
+import { sleep } from "../constants/sleep";
 import hre, { network, ethers } from "hardhat";
 import { goerli } from "../constants/constants";
 
@@ -15,6 +16,7 @@ const main = async function () {
   await BasicMessageSender.waitForDeployment();
   console.log(`BasicMessageSendor deployed at ${await BasicMessageSender.getAddress()}`);
 
+  await sleep(12000);
   console.log("Verifying BasicMessageSendor.... ");
   await hre.run("verify:verify", {
     address: await BasicMessageSender.getAddress(),

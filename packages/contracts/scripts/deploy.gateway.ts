@@ -1,7 +1,8 @@
-import { HardhatRuntimeEnvironment } from "hardhat/types";
 import hre, { network, ethers } from "hardhat";
-import { sepolia, goerli } from "../constants/constants";
-import { ethers as e } from "ethers";
+import { goerli, optestnet } from "../constants/constants";
+import { sleep } from "../constants/sleep";
+import dotenv from "dotenv";
+dotenv.config();
 
 const main = async function () {
   const chainId = network.config.chainId;
@@ -10,8 +11,24 @@ const main = async function () {
   let gatewayargs: any = [];
 
   if (chainId == 11155111) {
-    gatewayargs = [1, 2, 3];
+    gatewayargs = [
+      goerli.world_address,
+      goerli.world_app_id,
+      goerli.world_action_id,
+    ];
   } else if (chainId == 5) {
+    gatewayargs = [
+      goerli.world_address,
+      goerli.world_app_id,
+      goerli.world_action_id,
+    ];
+  } else if (chainId == 420) {
+    gatewayargs = [
+      optestnet.world_address,
+      optestnet.world_app_id,
+      optestnet.world_action_id,
+    ];
+  } else if (chainId == 100) {
     gatewayargs = [
       goerli.world_address,
       goerli.world_app_id,
@@ -23,26 +40,12 @@ const main = async function () {
 
   await gateway.waitForDeployment();
 
-  console.log(`Gateway deployed at ${await gateway.getAddress()}`);
+  const gatewayAddress = await gateway.getAddress();
 
-  let msgsenderarg: any = [];
+  console.log(`Gateway deployed at ${gatewayAddress}`);
+  console.log(`ARGS: ${gatewayargs}`);
 
-  if (chainId == 11155111) {
-    msgsenderarg = [1, 2, 3];
-  } else if (chainId == 5) {
-    msgsenderarg = [
-      goerli.ccip_router,
-      "0x0000000000000000000000000000000000000000",
-      goerli.axiomV2QueryAddress,
-      goerli.HyperlaneOutbox,
-      goerli.axiomCallbackQuerySchema,
-      goerli.gateway_deployment,
-      5,
-      "0x0000000000000000000000000000000000000000",
-    ];
-  }
-
-  await sleep(12000);
+  await sleep(20000);
   try {
     console.log("Verifying Gateway.... ");
     await hre.run("verify:verify", {
@@ -58,7 +61,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-
-async function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}

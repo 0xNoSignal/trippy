@@ -1,5 +1,6 @@
 import hre, { network, ethers } from "hardhat";
 import { mumbai, arbygoerli } from "../constants/constants";
+import { sleep } from "../constants/sleep";
 
 const main = async function () {
   const chainId = network.config.chainId;
@@ -22,6 +23,8 @@ const main = async function () {
 
   await BasicMessageReceiver.waitForDeployment();
   console.log(`BasicMessageReceiver deployed at ${await BasicMessageReceiver.getAddress()}`);
+
+  await sleep(12000);
 
   console.log("Verifying MsgReceiver.... ");
   await hre.run("verify:verify", {

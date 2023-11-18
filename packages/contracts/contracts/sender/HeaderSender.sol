@@ -6,24 +6,28 @@ import {AxiomV2Client} from "./AxiomV2Client.sol";
 import {HyperlaneMessageSender} from "./HyperlaneMessageSender.sol";
 import {IGateWay} from "./interfaces/IGateWay.sol";
 import {Bytes32ToString} from "./helpers/Bytes32ToString.sol";
-
-// import {IAxiomV2State} from "../axiom-v2-contracts/contracts/interfaces/core/IAxiomV2State.sol";
+import {IAxiomV2State} from "../../axiom-v2-contracts/contracts/interfaces/core/IAxiomV2State.sol";
+import {Bytes32ToBytesLib} from "./helpers/Bytes32ToBytes.sol";
 
 contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
     event CCIPMessageSent();
     IGateWay public gateway;
+    IAxiomV2State public headerverifier;
 
-    // IAxiomV2State public headerverifier;
+    using Bytes32ToBytesLib for bytes32;
+    address RECEIVER_ADDRESS;
 
     constructor(
         address _router,
         address _link,
         address _outbox,
         address _gateway,
-        address _headerverifier
+        address _headerverifier,
+        address _receiver_address
     ) BasicMessageSender(_router, _link) HyperlaneMessageSender(_outbox) {
         gateway = IGateWay(_gateway);
-        // headerverifier = IAxiomV2State(_headerverifier);
+        headerverifier = IAxiomV2State(_headerverifier);
+        RECEIVER_ADDRESS = _receiver_address;
     }
 
     /**
@@ -32,23 +36,21 @@ contract HeaderSender is BasicMessageSender, HyperlaneMessageSender {
      * numFinal : 384
      * https://goerli.etherscan.io/tx/0x2877b686859d8efcc27c394db5aeb1f4829cfce34b2b58c138828444157e468a#eventlog
      */
-    // function getpmmr(
-    //     bytes32 prevHash,
-    //     bytes32 root,
-    //     uint32 numFinal,
-    //     bool bridge
-    // ) public {
-    //     bytes memory pmmr = headerverifier.historicalRoots[
-    //         keccak256(abi.encodePacked(prevHash, root, numFinal))
-    //     ];
+    function getpmmr(
+        bytes32 prevHash,
+        bytes32 root,
+        uint32 numFinal,
+        bool bridge
+    ) public {
+        bytes32 pmmr = headerverifier.historicalRoots(10064896);
 
-    //     // use CCIP - arby goerli
-    //     if (bool == 0) {
-    //         sendMessage(6101244977088475029, address(0), pmmr);
-    //     }
-    //     // use Hyperlane
-    //     else if (bool == 1) {
-    //         sendViaHyperlane(1442, address(0), pmmr);
-    //     }
-    // }
+        // use Hyperlane
+        if (bridge == false) {
+            sendViaHyperlane(
+                1442,
+                RECEIVER_ADDRESS,
+                Bytes32ToBytesLib.convert(pmmr)
+            );
+        }
+    }
 }

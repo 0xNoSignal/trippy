@@ -17,7 +17,7 @@ abstract contract AxiomV2Client is IAxiomV2Client {
         uint256 queryId,
         bytes32[] calldata axiomResults,
         bytes calldata callbackExtraData
-    ) external override {
+    ) external {
         require(
             msg.sender == axiomV2QueryAddress,
             "AxiomV2Client: caller must be axiomV2QueryAddress"
