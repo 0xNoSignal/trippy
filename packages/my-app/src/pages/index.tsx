@@ -61,6 +61,25 @@ export default function Home() {
     }
   };
 
+  const sendHash = async (
+    hash: string
+  ): Promise<
+    | {
+        message: string;
+        success: boolean;
+      }
+    | undefined
+  > => {
+    try {
+      // Replace 'yourStringValue' with the value you want to send
+      const response = await fetch(`/api/axiom?hash=${hash}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   const depositMoney = async () => {
     console.log("depositMoney");
     if ((isVerified && kyc) || !kyc) {
@@ -85,6 +104,33 @@ export default function Home() {
         title: "Creating proof via axiom",
         status: "info",
         duration: 2000,
+        isClosable: true,
+      });
+      const feedback = await sendHash(hash);
+      if (!feedback) {
+        toast({
+          title: "Error creating proof",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+        return;
+      }
+      if (!feedback.success) {
+        toast({
+          title: "Error creating proof",
+          description: feedback.message,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+        return;
+      }
+      toast({
+        title: "Proof send to axiom",
+        description: feedback.message,
+        status: "success",
+        duration: 9000,
         isClosable: true,
       });
     } else {
