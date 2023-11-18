@@ -38,6 +38,7 @@ const main = async function () {
       goerli.axiomCallbackQuerySchema,
       goerli.gateway_deployment,
       5,
+      "0x0000000000000000000000000000000000000000",
     ];
   }
 
@@ -46,17 +47,21 @@ const main = async function () {
 
   console.log(`Msgsender deployed at ${await msgsender.getAddress()}`);
 
-  console.log("Verifying Gateway.... ");
-  await hre.run("verify:verify", {
-    address: await gateway.getAddress(),
-    constructorArguments: gatewayargs,
-  });
+  try {
+    console.log("Verifying Gateway.... ");
+    await hre.run("verify:verify", {
+      address: await gateway.getAddress(),
+      constructorArguments: gatewayargs,
+    });
 
-  console.log("Verifying Msgsender.... ");
-  await hre.run("verify:verify", {
-    address: await msgsender.getAddress(),
-    constructorArguments: msgsenderarg,
-  });
+    console.log("Verifying Msgsender.... ");
+    await hre.run("verify:verify", {
+      address: await msgsender.getAddress(),
+      constructorArguments: msgsenderarg,
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 main().catch((error) => {

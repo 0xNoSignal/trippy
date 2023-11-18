@@ -8,6 +8,7 @@
   "dependencies": {
     "@chainlink/contracts-ccip": "^0.7.6",
     "@hyperlane-xyz/core": "^3.1.9",
+    "@openzeppelin/contracts": "^5.0.0",
     "dotenv": "^16.3.1",
     "ethers": "^6.8.1"
   }

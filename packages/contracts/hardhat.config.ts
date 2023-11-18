@@ -5,13 +5,13 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.19",
+  solidity: "0.8.20",
   etherscan: {
     apiKey: {
       mainnet: process.env.ETHERSCAN_API_KEY!,
-      polygonMumbai: process.env.POLYGONSCAN_API_KEY!, 
-      goerli: process.env.ETHERSCAN_API_KEY!
-  }
+      polygonMumbai: process.env.POLYGONSCAN_API_KEY!,
+      goerli: process.env.ETHERSCAN_API_KEY!,
+    },
   },
   networks: {
     goerli: {
@@ -25,10 +25,10 @@ const config: HardhatUserConfig = {
       chainId: 100,
     },
     mumbai: {
-      url: process.env.POLYGON_MUMBAI_RPC_URL || "", 
+      url: process.env.POLYGON_MUMBAI_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 80001,
-    }
+    },
   },
 };
 

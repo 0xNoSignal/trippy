@@ -22,7 +22,7 @@ contract HyperlaneMessageSender {
     function sendViaHyperlane(
         uint32 _destinationDomain,
         bytes32 _recipient,
-        bytes calldata messageBody
+        bytes memory messageBody
     ) public {
         uint256 fee = outbox.quoteDispatch(
             _destinationDomain,
