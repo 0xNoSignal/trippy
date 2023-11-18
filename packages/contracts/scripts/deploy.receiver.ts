@@ -11,11 +11,6 @@ const main = async function () {
     gnosis.CCIPRouter,
   ];
 
-  const msgreceiver = await ethers.deployContract(
-    "MsgReceiver",
-    msgreceiverargs
-  );
-
   if (chainId === 1442) {
     msgreceiverargs = [
       zkEVMTestnet.shoyubashi,
@@ -23,6 +18,11 @@ const main = async function () {
       zkEVMTestnet.CCIPRouter,
     ];
   }
+
+  const msgreceiver = await ethers.deployContract(
+    "MsgReceiver",
+    msgreceiverargs
+  );
 
   await msgreceiver.waitForDeployment();
 
