@@ -26,7 +26,7 @@ export const gnosis = {
   shoyubashi: "0x31a8E89D6f98454D38C03eCA3DC543F6581d607C",
   HyperlaneInbox: "0xaD09d78f4c6b9dA2Ae82b1D34107802d380Bb74f",
   CCIPRouter: "0xe706Fec3a9696fE30F5C1796Bb2059CFa88b493b",
-  MsgReceiver: "0xf0b8B3B16DB43DE54e0c44BE17b035d72f0f324C"
+  MsgReceiver: "0xf0b8B3B16DB43DE54e0c44BE17b035d72f0f324C",
 };
 
 export const mumbai = {
@@ -40,29 +40,29 @@ export const mumbai = {
 export const arbygoerli = {
   ccip_router: "0x88E492127709447A5ABEFdaB8788a15B4567589E",
   chain_selector: "6101244977088475029",
-  HyperlaneMailbox: "0x13dABc0351407d5aAa0A50003a166A73b4febfDc", 
+  HyperlaneMailbox: "0x13dABc0351407d5aAa0A50003a166A73b4febfDc",
   chainId: "421613",
   LINK: "0x32d5D5978905d9c6c2D4C417F0E06Fe768a4FB5a",
   WETH: "0x32d5D5978905d9c6c2D4C417F0E06Fe768a4FB5a",
 };
 
 export const base = {
-  HyperlaneMailbox: "0x58483b754Abb1E8947BE63d6b95DF75b8249543A", 
+  HyperlaneMailbox: "0x58483b754Abb1E8947BE63d6b95DF75b8249543A",
   chainId: "84531",
-  MsgReceiver: "0x8df8fa643482C8a266AaCDa872Cc3080A0638c06"
-}
+  MsgReceiver: "0x8df8fa643482C8a266AaCDa872Cc3080A0638c06",
+};
 
 export const zkEVMTestnet = {
   shoyubashi: "0x0000000000000000000000000000000000000000",
   HyperlaneInbox: "0x598facE78a4302f11E3de0bee1894Da0b2Cb71F8",
   CCIPRouter: "0x0000000000000000000000000000000000000000",
-  MsgReceiver: "0xEC6c574E296e5553F7C59f01e122Abc0340f0D4E"
+  MsgReceiver: "0xEC6c574E296e5553F7C59f01e122Abc0340f0D4E",
 };
 
 export const optestnet = {
-  world_address: "0x11cA3127182f7583EfC416a8771BD4d11Fae4334",
-  world_app_id: "app_staging_289b1a3beb44c91a9bfc39d0a76e8e70", 
-  world_action_id: "trippy", 
+  world_address: "0x515f06B36E6D3b707eAecBdeD18d8B384944c87f",
+  world_app_id: "app_staging_289b1a3beb44c91a9bfc39d0a76e8e70",
+  world_action_id: "trippy",
   HyperlaneMailbox: "0xB5f021728Ea6223E3948Db2da61d612307945eA2",
-  MsgReceiver: "0x5c6602be3b6684bbDf2D13caA1f9541d83C35812"
-}
+  MsgReceiver: "0x5c6602be3b6684bbDf2D13caA1f9541d83C35812",
+};

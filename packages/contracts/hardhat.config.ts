@@ -17,7 +17,7 @@ const config: HardhatUserConfig = {
       zkEVMTestnet: process.env.ETHERSCAN_ZK_EVM!,
       xdai: process.env.GNOSISSCAN_API_KEY!,
       optimisticGoerli: process.env.OPSCAN_API_KEY!,
-      baseGoerli: process.env.BASEGOERLI_API_KEY!
+      baseGoerli: process.env.BASEGOERLI_API_KEY!,
     },
   },
   networks: {
@@ -45,15 +45,17 @@ const config: HardhatUserConfig = {
       url: process.env.ZK_EVM_TESTNET_RPC || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 1442,
-    }, opgoerli: {
+    },
+    opgoerli: {
       url: process.env.OPGOERLI_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 420,
-    }, basegoerli: {
+    },
+    basegoerli: {
       url: process.env.BASEGOERLI_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 84531,
-    }
+    },
   },
 };
 
