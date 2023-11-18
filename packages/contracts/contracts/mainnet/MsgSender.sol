@@ -14,7 +14,6 @@ contract MsgSender is
     HyperlaneMessageSender
 {
     using Bytes32ToString for bytes32;
-    address RECEIVER_ADDRESS;
 
     enum Bridges {
         Hyperlane,
@@ -25,6 +24,8 @@ contract MsgSender is
     uint64 public callbackSourceChainId;
     bytes32 public axiomCallbackQuerySchema;
     IGateWay public gateway;
+    address RECEIVER_ADDRESS;
+    address owner;
 
     constructor(
         address _router,
@@ -36,6 +37,7 @@ contract MsgSender is
         uint64 _callbackSourceChainId,
         address _receiverAddress
     )
+        payable
         BasicMessageSender(_router, _link)
         AxiomV2Client(_axiomV2QueryAddress)
         HyperlaneMessageSender(_outbox)
@@ -44,6 +46,12 @@ contract MsgSender is
         axiomCallbackQuerySchema = _axiomCallbackQuerySchema;
         gateway = IGateWay(_gateway);
         RECEIVER_ADDRESS = _receiverAddress;
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can call this function.");
+        _;
     }
 
     function _axiomV2Callback(
@@ -96,5 +104,14 @@ contract MsgSender is
             querySchema == axiomCallbackQuerySchema,
             "AxiomV2: query schema mismatch"
         );
+    }
+
+    function topup() external payable {
+        require(msg.value > 0, "Must send useless coins");
+    }
+
+    function withdrawForTesting() external onlyOwner {
+        // has to be deleted on mainnet
+        payable(owner).transfer(address(this).balance);
     }
 }

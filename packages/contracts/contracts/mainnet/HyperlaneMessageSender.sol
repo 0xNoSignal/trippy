@@ -24,6 +24,11 @@ contract HyperlaneMessageSender {
         bytes32 _recipient,
         bytes calldata messageBody
     ) public {
+        uint256 fee = outbox.quoteDispatch(
+            _destinationDomain,
+            _recipient,
+            messageBody
+        );
         outbox.dispatch(_destinationDomain, _recipient, messageBody);
         emit SentMessage(_destinationDomain, _recipient, messageBody);
     }
