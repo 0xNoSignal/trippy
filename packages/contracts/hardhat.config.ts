@@ -46,15 +46,17 @@ const config: HardhatUserConfig = {
       url: process.env.ZK_EVM_TESTNET_RPC || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 1442,
-    }, opgoerli: {
+    },
+    opgoerli: {
       url: process.env.OPGOERLI_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 420,
-    }, basegoerli: {
+    },
+    basegoerli: {
       url: process.env.BASEGOERLI_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 84531,
-    }
+    },
   },
 };
 
