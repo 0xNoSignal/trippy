@@ -2,7 +2,10 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-verify";
 import * as dotenv from "dotenv";
-dotenv.config();
+dotenv.config()
+
+console.log(process.env.ETHERSCAN_API_KEY)
+console.log(process.env.POLYGONSCAN_API_KEY)
 
 const config: HardhatUserConfig = {
   solidity: "0.8.20",
@@ -21,18 +24,18 @@ const config: HardhatUserConfig = {
       chainId: 5,
     },
     gnosis: {
-      url: process.env.GNOSISRPCURL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
+      url: process.env.GNOSISRPCURL || "",
       chainId: 100,
     },
     mumbai: {
-      url: process.env.POLYGON_MUMBAI_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
+      url: process.env.POLYGON_MUMBAI_RPC_URL || "",
       chainId: 80001,
     },
     arbygoerli: {
-      url: process.env.ARBITRUM_TESTNET_RPC_URL || "", 
       accounts: [process.env.PRIVATE_KEY || ""],
+      url: process.env.ARBITRUM_TESTNET_RPC_URL || "",  
       chainId: 421613,
     }
   },

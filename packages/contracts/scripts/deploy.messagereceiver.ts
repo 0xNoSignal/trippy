@@ -13,7 +13,7 @@ const main = async function () {
     ccip_router = arbygoerli.ccip_router
   }
 
-  const BasicMessageReceiverargs: any = [mumbai.ccip_router];
+  const BasicMessageReceiverargs: any = [ccip_router];
 
   const BasicMessageReceiver = await ethers.deployContract(
     "BasicMessageReceiver",
