@@ -11,7 +11,8 @@ const config: HardhatUserConfig = {
       mainnet: process.env.ETHERSCAN_API_KEY!,
       polygonMumbai: process.env.POLYGONSCAN_API_KEY!,
       goerli: process.env.ETHERSCAN_API_KEY!,
-      arbygoerli: process.env.ARBYSCAN_API_KEY!
+      arbygoerli: process.env.ARBYSCAN_API_KEY!,
+      zkEVMTestnet: process.env.ETHERSCAN_ZK_EVM!,
     },
   },
   networks: {
@@ -31,10 +32,15 @@ const config: HardhatUserConfig = {
       chainId: 80001,
     },
     arbygoerli: {
-      url: process.env.ARBITRUM_TESTNET_RPC_URL || "", 
+      url: process.env.ARBITRUM_TESTNET_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 421613,
-    }
+    },
+    zkEVMTestnet: {
+      url: process.env.ZK_EVM_TESTNET_RPC || "",
+      accounts: [process.env.PRIVATE_KEY || ""],
+      chainId: 1442,
+    },
   },
 };
 

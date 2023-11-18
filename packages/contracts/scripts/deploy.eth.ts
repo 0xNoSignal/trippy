@@ -46,7 +46,7 @@ const main = async function () {
   await msgsender.waitForDeployment();
 
   console.log(`Msgsender deployed at ${await msgsender.getAddress()}`);
-
+  await sleep(12000);
   try {
     console.log("Verifying Gateway.... ");
     await hre.run("verify:verify", {
@@ -68,3 +68,7 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+async function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

@@ -20,6 +20,7 @@ const main = async function () {
 
   console.log(`MsgReceiver deployed at ${await msgreceiver.getAddress()}`);
 
+  await sleep(12000);
   console.log("Verifying MsgReceiver.... ");
   await hre.run("verify:verify", {
     address: await msgreceiver.getAddress(),
@@ -31,3 +32,7 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+async function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
