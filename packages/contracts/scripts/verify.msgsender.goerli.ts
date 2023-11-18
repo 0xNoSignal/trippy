@@ -1,4 +1,5 @@
-import { goerli } from "../constants/constants";
+import { sleep } from "../constants/sleep";
+import { goerli, zkEVMTestnet } from "../constants/constants";
 import hre, { network, ethers } from "hardhat";
 
 const CONTRACT = process.env.CONTRACT!;
@@ -11,15 +12,15 @@ async function main() {
   }
 
   const msgsenderarg = [
-    goerli.ccip_router,
-    "0x0000000000000000000000000000000000000000",
-    goerli.axiomV2QueryAddress,
-    goerli.HyperlaneOutbox,
-    goerli.axiomCallbackQuerySchema,
-    goerli.gateway_deployment,
-    chainId,
-    "0x0000000000000000000000000000000000000000",
-  ];
+      goerli.ccip_router,
+      goerli.link_token,
+      goerli.axiomV2QueryAddress,
+      goerli.HyperlaneOutbox,
+      goerli.axiomCallbackQuerySchema,
+      goerli.gateway_deployment,
+      5,
+      zkEVMTestnet.MsgReceiver,
+    ];
 
   console.log("Verifying Msgsender.... ");
   await hre.run("verify:verify", {

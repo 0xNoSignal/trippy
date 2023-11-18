@@ -17,7 +17,7 @@ export const goerli = {
   axiomV2QueryAddress: "0xBd5307B0Bf573E3F2864Af960167b24Aa346952b",
   HyperlaneOutbox: "0x49cfd6Ef774AcAb14814D699e3F7eE36Fdfba932",
   axiomCallbackQuerySchema:
-    "0x7414b8dc240f08f8e2ae002abf72afc299dc4b0e4ab522aeb3bf0dd9c2ccb61f",
+    "0x752c06e58ed9a96fc406a8834dcb781163693c02b127cc7a45d6bfc901765ce8",
   gateway_deployment: "0x7E10829CDd5A062D9B95dB13eCb96076cfa56E4E",
   callbackSourceChainId: 5,
 };
@@ -26,6 +26,7 @@ export const gnosis = {
   shoyubashi: "0x31a8E89D6f98454D38C03eCA3DC543F6581d607C",
   HyperlaneInbox: "0xaD09d78f4c6b9dA2Ae82b1D34107802d380Bb74f",
   CCIPRouter: "0xe706Fec3a9696fE30F5C1796Bb2059CFa88b493b",
+  MsgReceiver: "0xf0b8B3B16DB43DE54e0c44BE17b035d72f0f324C"
 };
 
 export const mumbai = {
@@ -39,9 +40,17 @@ export const mumbai = {
 export const arbygoerli = {
   ccip_router: "0x88E492127709447A5ABEFdaB8788a15B4567589E",
   chain_selector: "6101244977088475029",
+  HyperlaneMailbox: "0x13dABc0351407d5aAa0A50003a166A73b4febfDc", 
+  chainId: "421613",
   LINK: "0x32d5D5978905d9c6c2D4C417F0E06Fe768a4FB5a",
   WETH: "0x32d5D5978905d9c6c2D4C417F0E06Fe768a4FB5a",
 };
+
+export const base = {
+  HyperlaneMailbox: "0x58483b754Abb1E8947BE63d6b95DF75b8249543A", 
+  chainId: "84531",
+  MsgReceiver: "0x8df8fa643482C8a266AaCDa872Cc3080A0638c06"
+}
 
 export const zkEVMTestnet = {
   shoyubashi: "0x0000000000000000000000000000000000000000",
@@ -49,3 +58,11 @@ export const zkEVMTestnet = {
   CCIPRouter: "0x0000000000000000000000000000000000000000",
   MsgReceiver: "0xEC6c574E296e5553F7C59f01e122Abc0340f0D4E"
 };
+
+export const optestnet = {
+  world_address: "0x11cA3127182f7583EfC416a8771BD4d11Fae4334",
+  world_app_id: "app_staging_289b1a3beb44c91a9bfc39d0a76e8e70", 
+  world_action_id: "trippy", 
+  HyperlaneMailbox: "0xB5f021728Ea6223E3948Db2da61d612307945eA2",
+  MsgReceiver: "0x5c6602be3b6684bbDf2D13caA1f9541d83C35812"
+}

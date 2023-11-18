@@ -23,6 +23,9 @@ const main = async function () {
   await BasicMessageReceiver.waitForDeployment();
   console.log(`BasicMessageReceiver deployed at ${await BasicMessageReceiver.getAddress()}`);
 
+
+  await sleep(12000);
+
   console.log("Verifying MsgReceiver.... ");
   await hre.run("verify:verify", {
     address: await BasicMessageReceiver.getAddress(),

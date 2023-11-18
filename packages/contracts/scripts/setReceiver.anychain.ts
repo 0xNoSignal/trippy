@@ -1,3 +1,4 @@
+import { sleep } from "../constants/sleep";
 import { ethers } from "hardhat";
 
 const RECEIVER = process.env.RECEIVER!;
