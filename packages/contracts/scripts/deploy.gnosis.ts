@@ -18,11 +18,11 @@ const main = async function () {
 
   await msgreceiver.waitForDeployment();
 
-  console.log(`MsgReceiver deployed at ${msgreceiver.address}`);
-
+  console.log(`MsgReceiver deployed at ${await msgreceiver.getAddress()}`);
+  await sleep(12000);
   console.log("Verifying MsgReceiver.... ");
   await hre.run("verify:verify", {
-    address: msgreceiver.address,
+    address: await msgreceiver.getAddress(),
     constructorArguments: msgreceiverargs,
   });
 };
@@ -31,3 +31,7 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+async function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
