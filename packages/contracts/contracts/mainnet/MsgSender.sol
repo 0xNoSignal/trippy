@@ -54,6 +54,10 @@ contract MsgSender is
         _;
     }
 
+    function setReceiverAddress(address _receiverAddress) external onlyOwner {
+        RECEIVER_ADDRESS = _receiverAddress;
+    }
+
     function _axiomV2Callback(
         uint64 sourceChainId,
         address callerAddr,
