@@ -1,0 +1,4517 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "BucketOverfilled",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "capacity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "requested",
+          "type": "uint256"
+        }
+      ],
+      "name": "ConsumingMoreThanMaxCapacity",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OnlyCallableByAdminOrOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "waitInSeconds",
+          "type": "uint256"
+        }
+      ],
+      "name": "RateLimitReached",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "isEnabled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint128",
+              "name": "capacity",
+              "type": "uint128"
+            },
+            {
+              "internalType": "uint128",
+              "name": "rate",
+              "type": "uint128"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct RateLimiter.Config",
+          "name": "config",
+          "type": "tuple"
+        }
+      ],
+      "name": "ConfigChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokensConsumed",
+      "type": "event"
+    }
+  ],
+  "bytecode": {
+    "object": "0x602d6037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea164736f6c6343000813000a",
+    "sourceMap": "611:4810:28:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;611:4810:28;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea164736f6c6343000813000a",
+    "sourceMap": "611:4810:28:-:0;;;;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"BucketOverfilled\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"capacity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requested\",\"type\":\"uint256\"}],\"name\":\"ConsumingMoreThanMaxCapacity\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyCallableByAdminOrOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"waitInSeconds\",\"type\":\"uint256\"}],\"name\":\"RateLimitReached\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"isEnabled\",\"type\":\"bool\"},{\"internalType\":\"uint128\",\"name\":\"capacity\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"rate\",\"type\":\"uint128\"}],\"indexed\":false,\"internalType\":\"struct RateLimiter.Config\",\"name\":\"config\",\"type\":\"tuple\"}],\"name\":\"ConfigChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokens\",\"type\":\"uint256\"}],\"name\":\"TokensConsumed\",\"type\":\"event\"}],\"devdoc\":{\"details\":\"uint128 is safe for rate limiter state. For USD value rate limiting, it can adequately store USD value in 18 decimals. For ERC20 token amount rate limiting, all tokens that will be listed will have at most a supply of uint128.max tokens, and it will therefore not overflow the bucket. In exceptional scenarios where tokens consumed may be larger than uint128, e.g. compromised issuer, an enabled RateLimiter will check and revert.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Implements Token Bucket rate limiting.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/libraries/RateLimiter.sol\":\"RateLimiter\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/libraries/Client.sol\":{\"keccak256\":\"0xf2616f59db15ba0493e4ce3514ea0655cbc9b65ee754e7fc012fe19752659574\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://3ebc41940d13751005c195f743f5f22cc1e7b98f6d72cc10116b4853b5ac9837\",\"dweb:/ipfs/QmNweYHQHsTLWFa9cy8XJgxFRgH97XLAGxPw3k8diwrTj6\"]},\"contracts/libraries/RateLimiter.sol\":{\"keccak256\":\"0xbd8f971d35bc5ad464b48277220c3ab0f57198fb3bf27959d1d8b8c6fc187aad\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://9f1b60b876887943f880d033341b70f513f3e77bfd68c875920df8f57a84e1e0\",\"dweb:/ipfs/QmYVt4qGACebfu4BMNpwhcerWbiLmw6jFTddwYYqfoMDCa\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "BucketOverfilled"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "capacity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "requested",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "ConsumingMoreThanMaxCapacity"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OnlyCallableByAdminOrOwner"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "waitInSeconds",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "RateLimitReached"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "struct RateLimiter.Config",
+              "name": "config",
+              "type": "tuple",
+              "components": [
+                {
+                  "internalType": "bool",
+                  "name": "isEnabled",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "uint128",
+                  "name": "capacity",
+                  "type": "uint128"
+                },
+                {
+                  "internalType": "uint128",
+                  "name": "rate",
+                  "type": "uint128"
+                }
+              ],
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "ConfigChanged",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokens",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "TokensConsumed",
+          "anonymous": false
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/libraries/RateLimiter.sol": "RateLimiter"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/libraries/Client.sol": {
+        "keccak256": "0xf2616f59db15ba0493e4ce3514ea0655cbc9b65ee754e7fc012fe19752659574",
+        "urls": [
+          "bzz-raw://3ebc41940d13751005c195f743f5f22cc1e7b98f6d72cc10116b4853b5ac9837",
+          "dweb:/ipfs/QmNweYHQHsTLWFa9cy8XJgxFRgH97XLAGxPw3k8diwrTj6"
+        ],
+        "license": "BUSL-1.1"
+      },
+      "contracts/libraries/RateLimiter.sol": {
+        "keccak256": "0xbd8f971d35bc5ad464b48277220c3ab0f57198fb3bf27959d1d8b8c6fc187aad",
+        "urls": [
+          "bzz-raw://9f1b60b876887943f880d033341b70f513f3e77bfd68c875920df8f57a84e1e0",
+          "dweb:/ipfs/QmYVt4qGACebfu4BMNpwhcerWbiLmw6jFTddwYYqfoMDCa"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/libraries/RateLimiter.sol",
+    "id": 6368,
+    "exportedSymbols": {
+      "Client": [
+        5668
+      ],
+      "RateLimiter": [
+        6367
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:5385:28",
+    "nodes": [
+      {
+        "id": 6025,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:28",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 6027,
+        "nodeType": "ImportDirective",
+        "src": "62:36:28",
+        "nodes": [],
+        "absolutePath": "contracts/libraries/Client.sol",
+        "file": "./Client.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 6368,
+        "sourceUnit": 5669,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 6026,
+              "name": "Client",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 5668,
+              "src": "70:6:28",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 6367,
+        "nodeType": "ContractDefinition",
+        "src": "611:4810:28",
+        "nodes": [
+          {
+            "id": 6030,
+            "nodeType": "ErrorDefinition",
+            "src": "635:25:28",
+            "nodes": [],
+            "errorSelector": "9725942a",
+            "name": "BucketOverfilled",
+            "nameLocation": "641:16:28",
+            "parameters": {
+              "id": 6029,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "657:2:28"
+            }
+          },
+          {
+            "id": 6036,
+            "nodeType": "ErrorDefinition",
+            "src": "663:72:28",
+            "nodes": [],
+            "errorSelector": "48369c43",
+            "name": "ConsumingMoreThanMaxCapacity",
+            "nameLocation": "669:28:28",
+            "parameters": {
+              "id": 6035,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6032,
+                  "mutability": "mutable",
+                  "name": "capacity",
+                  "nameLocation": "706:8:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6036,
+                  "src": "698:16:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6031,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "698:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6034,
+                  "mutability": "mutable",
+                  "name": "requested",
+                  "nameLocation": "724:9:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6036,
+                  "src": "716:17:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6033,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "716:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "697:37:28"
+            }
+          },
+          {
+            "id": 6040,
+            "nodeType": "ErrorDefinition",
+            "src": "738:46:28",
+            "nodes": [],
+            "errorSelector": "dc96cefa",
+            "name": "RateLimitReached",
+            "nameLocation": "744:16:28",
+            "parameters": {
+              "id": 6039,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6038,
+                  "mutability": "mutable",
+                  "name": "waitInSeconds",
+                  "nameLocation": "769:13:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6040,
+                  "src": "761:21:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6037,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "761:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "760:23:28"
+            }
+          },
+          {
+            "id": 6042,
+            "nodeType": "ErrorDefinition",
+            "src": "787:35:28",
+            "nodes": [],
+            "errorSelector": "f6cd5620",
+            "name": "OnlyCallableByAdminOrOwner",
+            "nameLocation": "793:26:28",
+            "parameters": {
+              "id": 6041,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "819:2:28"
+            }
+          },
+          {
+            "id": 6046,
+            "nodeType": "EventDefinition",
+            "src": "826:37:28",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "1871cdf8010e63f2eb8384381a68dfa7416dc571a5517e66e88b2d2d0c0a690a",
+            "name": "TokensConsumed",
+            "nameLocation": "832:14:28",
+            "parameters": {
+              "id": 6045,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6044,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "tokens",
+                  "nameLocation": "855:6:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6046,
+                  "src": "847:14:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6043,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "847:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "846:16:28"
+            }
+          },
+          {
+            "id": 6051,
+            "nodeType": "EventDefinition",
+            "src": "866:35:28",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "9ea3374b67bf275e6bb9c8ae68f9cae023e1c528b4b27e092f0bb209d3531c19",
+            "name": "ConfigChanged",
+            "nameLocation": "872:13:28",
+            "parameters": {
+              "id": 6050,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6049,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "config",
+                  "nameLocation": "893:6:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6051,
+                  "src": "886:13:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                    "typeString": "struct RateLimiter.Config"
+                  },
+                  "typeName": {
+                    "id": 6048,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6047,
+                      "name": "Config",
+                      "nameLocations": [
+                        "886:6:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6069,
+                      "src": "886:6:28"
+                    },
+                    "referencedDeclaration": 6069,
+                    "src": "886:6:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Config_$6069_storage_ptr",
+                      "typeString": "struct RateLimiter.Config"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "885:15:28"
+            }
+          },
+          {
+            "id": 6062,
+            "nodeType": "StructDefinition",
+            "src": "905:468:28",
+            "nodes": [],
+            "canonicalName": "RateLimiter.TokenBucket",
+            "members": [
+              {
+                "constant": false,
+                "id": 6053,
+                "mutability": "mutable",
+                "name": "tokens",
+                "nameLocation": "938:6:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6062,
+                "src": "930:14:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6052,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "930:7:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6055,
+                "mutability": "mutable",
+                "name": "lastUpdated",
+                "nameLocation": "1019:11:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6062,
+                "src": "1012:18:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 6054,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1012:6:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6057,
+                "mutability": "mutable",
+                "name": "isEnabled",
+                "nameLocation": "1116:9:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6062,
+                "src": "1111:14:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 6056,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1111:4:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6059,
+                "mutability": "mutable",
+                "name": "capacity",
+                "nameLocation": "1207:8:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6062,
+                "src": "1199:16:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6058,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1199:7:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6061,
+                "mutability": "mutable",
+                "name": "rate",
+                "nameLocation": "1292:4:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6062,
+                "src": "1284:12:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6060,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1284:7:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "TokenBucket",
+            "nameLocation": "912:11:28",
+            "scope": 6367,
+            "visibility": "public"
+          },
+          {
+            "id": 6069,
+            "nodeType": "StructDefinition",
+            "src": "1377:245:28",
+            "nodes": [],
+            "canonicalName": "RateLimiter.Config",
+            "members": [
+              {
+                "constant": false,
+                "id": 6064,
+                "mutability": "mutable",
+                "name": "isEnabled",
+                "nameLocation": "1402:9:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6069,
+                "src": "1397:14:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 6063,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1397:4:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6066,
+                "mutability": "mutable",
+                "name": "capacity",
+                "nameLocation": "1483:8:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6069,
+                "src": "1475:16:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6065,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1475:7:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6068,
+                "mutability": "mutable",
+                "name": "rate",
+                "nameLocation": "1559:4:28",
+                "nodeType": "VariableDeclaration",
+                "scope": 6069,
+                "src": "1551:12:28",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6067,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1551:7:28",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Config",
+            "nameLocation": "1384:6:28",
+            "scope": 6367,
+            "visibility": "public"
+          },
+          {
+            "id": 6190,
+            "nodeType": "FunctionDefinition",
+            "src": "2003:1245:28",
+            "nodes": [],
+            "body": {
+              "id": 6189,
+              "nodeType": "Block",
+              "src": "2083:1165:28",
+              "nodes": [],
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 6084,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6080,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "!",
+                      "prefix": true,
+                      "src": "2198:19:28",
+                      "subExpression": {
+                        "expression": {
+                          "id": 6078,
+                          "name": "s_bucket",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6073,
+                          "src": "2199:8:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                            "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                          }
+                        },
+                        "id": 6079,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "2208:9:28",
+                        "memberName": "isEnabled",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6057,
+                        "src": "2199:18:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "||",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 6083,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 6081,
+                        "name": "requestTokens",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6075,
+                        "src": "2221:13:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 6082,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2238:1:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "2221:18:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2198:41:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6087,
+                  "nodeType": "IfStatement",
+                  "src": "2194:68:28",
+                  "trueBody": {
+                    "id": 6086,
+                    "nodeType": "Block",
+                    "src": "2241:21:28",
+                    "statements": [
+                      {
+                        "functionReturnParameters": 6077,
+                        "id": 6085,
+                        "nodeType": "Return",
+                        "src": "2249:7:28"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "assignments": [
+                    6089
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6089,
+                      "mutability": "mutable",
+                      "name": "tokens",
+                      "nameLocation": "2276:6:28",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6189,
+                      "src": "2268:14:28",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 6088,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2268:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6092,
+                  "initialValue": {
+                    "expression": {
+                      "id": 6090,
+                      "name": "s_bucket",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6073,
+                      "src": "2285:8:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                        "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                      }
+                    },
+                    "id": 6091,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberLocation": "2294:6:28",
+                    "memberName": "tokens",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 6053,
+                    "src": "2285:15:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2268:32:28"
+                },
+                {
+                  "assignments": [
+                    6094
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6094,
+                      "mutability": "mutable",
+                      "name": "capacity",
+                      "nameLocation": "2314:8:28",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6189,
+                      "src": "2306:16:28",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 6093,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2306:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6097,
+                  "initialValue": {
+                    "expression": {
+                      "id": 6095,
+                      "name": "s_bucket",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6073,
+                      "src": "2325:8:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                        "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                      }
+                    },
+                    "id": 6096,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberLocation": "2334:8:28",
+                    "memberName": "capacity",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 6059,
+                    "src": "2325:17:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2306:36:28"
+                },
+                {
+                  "assignments": [
+                    6099
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6099,
+                      "mutability": "mutable",
+                      "name": "timeDiff",
+                      "nameLocation": "2356:8:28",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6189,
+                      "src": "2348:16:28",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 6098,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2348:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6105,
+                  "initialValue": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6104,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 6100,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -4,
+                        "src": "2367:5:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 6101,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "2373:9:28",
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "2367:15:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "-",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 6102,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6073,
+                        "src": "2385:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6103,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "2394:11:28",
+                      "memberName": "lastUpdated",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6055,
+                      "src": "2385:20:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "src": "2367:38:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2348:57:28"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6108,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6106,
+                      "name": "timeDiff",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6099,
+                      "src": "2416:8:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 6107,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2428:1:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "2416:13:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6137,
+                  "nodeType": "IfStatement",
+                  "src": "2412:271:28",
+                  "trueBody": {
+                    "id": 6136,
+                    "nodeType": "Block",
+                    "src": "2431:252:28",
+                    "statements": [
+                      {
+                        "condition": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 6111,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 6109,
+                            "name": "tokens",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6089,
+                            "src": "2443:6:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": ">",
+                          "rightExpression": {
+                            "id": 6110,
+                            "name": "capacity",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6094,
+                            "src": "2452:8:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "2443:17:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 6115,
+                        "nodeType": "IfStatement",
+                        "src": "2439:48:28",
+                        "trueBody": {
+                          "errorCall": {
+                            "arguments": [],
+                            "expression": {
+                              "argumentTypes": [],
+                              "id": 6112,
+                              "name": "BucketOverfilled",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6030,
+                              "src": "2469:16:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                                "typeString": "function () pure"
+                              }
+                            },
+                            "id": 6113,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2469:18:28",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_tuple$__$",
+                              "typeString": "tuple()"
+                            }
+                          },
+                          "id": 6114,
+                          "nodeType": "RevertStatement",
+                          "src": "2462:25:28"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 6124,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "id": 6116,
+                            "name": "tokens",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6089,
+                            "src": "2553:6:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "arguments": [
+                              {
+                                "id": 6118,
+                                "name": "capacity",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6094,
+                                "src": "2579:8:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              {
+                                "id": 6119,
+                                "name": "tokens",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6089,
+                                "src": "2589:6:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              {
+                                "id": 6120,
+                                "name": "timeDiff",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6099,
+                                "src": "2597:8:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              {
+                                "expression": {
+                                  "id": 6121,
+                                  "name": "s_bucket",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 6073,
+                                  "src": "2607:8:28",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                    "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                                  }
+                                },
+                                "id": 6122,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberLocation": "2616:4:28",
+                                "memberName": "rate",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 6061,
+                                "src": "2607:13:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint128",
+                                  "typeString": "uint128"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint128",
+                                  "typeString": "uint128"
+                                }
+                              ],
+                              "id": 6117,
+                              "name": "_calculateRefill",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6348,
+                              "src": "2562:16:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                                "typeString": "function (uint256,uint256,uint256,uint256) pure returns (uint256)"
+                              }
+                            },
+                            "id": 6123,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2562:59:28",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "2553:68:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 6125,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2553:68:28"
+                      },
+                      {
+                        "expression": {
+                          "id": 6134,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "expression": {
+                              "id": 6126,
+                              "name": "s_bucket",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6073,
+                              "src": "2630:8:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                              }
+                            },
+                            "id": 6128,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberLocation": "2639:11:28",
+                            "memberName": "lastUpdated",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 6055,
+                            "src": "2630:20:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "arguments": [
+                              {
+                                "expression": {
+                                  "id": 6131,
+                                  "name": "block",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": -4,
+                                  "src": "2660:5:28",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_block",
+                                    "typeString": "block"
+                                  }
+                                },
+                                "id": 6132,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberLocation": "2666:9:28",
+                                "memberName": "timestamp",
+                                "nodeType": "MemberAccess",
+                                "src": "2660:15:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "id": 6130,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "2653:6:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_uint32_$",
+                                "typeString": "type(uint32)"
+                              },
+                              "typeName": {
+                                "id": 6129,
+                                "name": "uint32",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "2653:6:28",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 6133,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2653:23:28",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "src": "2630:46:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 6135,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2630:46:28"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6140,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6138,
+                      "name": "capacity",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6094,
+                      "src": "2693:8:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "id": 6139,
+                      "name": "requestTokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6075,
+                      "src": "2704:13:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2693:24:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6146,
+                  "nodeType": "IfStatement",
+                  "src": "2689:90:28",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [
+                        {
+                          "id": 6142,
+                          "name": "capacity",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6094,
+                          "src": "2755:8:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "id": 6143,
+                          "name": "requestTokens",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6075,
+                          "src": "2765:13:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6141,
+                        "name": "ConsumingMoreThanMaxCapacity",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6036,
+                        "src": "2726:28:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$_t_uint256_$_t_uint256_$returns$__$",
+                          "typeString": "function (uint256,uint256) pure"
+                        }
+                      },
+                      "id": 6144,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2726:53:28",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 6145,
+                    "nodeType": "RevertStatement",
+                    "src": "2719:60:28"
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6149,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6147,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6089,
+                      "src": "2789:6:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "id": 6148,
+                      "name": "requestTokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6075,
+                      "src": "2798:13:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2789:22:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6171,
+                  "nodeType": "IfStatement",
+                  "src": "2785:282:28",
+                  "trueBody": {
+                    "id": 6170,
+                    "nodeType": "Block",
+                    "src": "2813:254:28",
+                    "statements": [
+                      {
+                        "assignments": [
+                          6151
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 6151,
+                            "mutability": "mutable",
+                            "name": "rate",
+                            "nameLocation": "2829:4:28",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 6170,
+                            "src": "2821:12:28",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            },
+                            "typeName": {
+                              "id": 6150,
+                              "name": "uint256",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "2821:7:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 6154,
+                        "initialValue": {
+                          "expression": {
+                            "id": 6152,
+                            "name": "s_bucket",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6073,
+                            "src": "2836:8:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                              "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                            }
+                          },
+                          "id": 6153,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "2845:4:28",
+                          "memberName": "rate",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 6061,
+                          "src": "2836:13:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "2821:28:28"
+                      },
+                      {
+                        "errorCall": {
+                          "arguments": [
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 6167,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "components": [
+                                  {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 6164,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "components": [
+                                        {
+                                          "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          },
+                                          "id": 6158,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "leftExpression": {
+                                            "id": 6156,
+                                            "name": "requestTokens",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 6075,
+                                            "src": "3015:13:28",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_uint256",
+                                              "typeString": "uint256"
+                                            }
+                                          },
+                                          "nodeType": "BinaryOperation",
+                                          "operator": "-",
+                                          "rightExpression": {
+                                            "id": 6157,
+                                            "name": "tokens",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 6089,
+                                            "src": "3031:6:28",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_uint256",
+                                              "typeString": "uint256"
+                                            }
+                                          },
+                                          "src": "3015:22:28",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          }
+                                        }
+                                      ],
+                                      "id": 6159,
+                                      "isConstant": false,
+                                      "isInlineArray": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "nodeType": "TupleExpression",
+                                      "src": "3014:24:28",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": "+",
+                                    "rightExpression": {
+                                      "components": [
+                                        {
+                                          "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          },
+                                          "id": 6162,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "leftExpression": {
+                                            "id": 6160,
+                                            "name": "rate",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 6151,
+                                            "src": "3042:4:28",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_uint256",
+                                              "typeString": "uint256"
+                                            }
+                                          },
+                                          "nodeType": "BinaryOperation",
+                                          "operator": "-",
+                                          "rightExpression": {
+                                            "hexValue": "31",
+                                            "id": 6161,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "number",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "3049:1:28",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_rational_1_by_1",
+                                              "typeString": "int_const 1"
+                                            },
+                                            "value": "1"
+                                          },
+                                          "src": "3042:8:28",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          }
+                                        }
+                                      ],
+                                      "id": 6163,
+                                      "isConstant": false,
+                                      "isInlineArray": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "nodeType": "TupleExpression",
+                                      "src": "3041:10:28",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "src": "3014:37:28",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  }
+                                ],
+                                "id": 6165,
+                                "isConstant": false,
+                                "isInlineArray": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "TupleExpression",
+                                "src": "3013:39:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "/",
+                              "rightExpression": {
+                                "id": 6166,
+                                "name": "rate",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6151,
+                                "src": "3055:4:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "src": "3013:46:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 6155,
+                            "name": "RateLimitReached",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6040,
+                            "src": "2996:16:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_error_pure$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256) pure"
+                            }
+                          },
+                          "id": 6168,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2996:64:28",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 6169,
+                        "nodeType": "RevertStatement",
+                        "src": "2989:71:28"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "id": 6174,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 6172,
+                      "name": "tokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6089,
+                      "src": "3072:6:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "-=",
+                    "rightHandSide": {
+                      "id": 6173,
+                      "name": "requestTokens",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6075,
+                      "src": "3082:13:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "3072:23:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6175,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3072:23:28"
+                },
+                {
+                  "expression": {
+                    "id": 6183,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6176,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6073,
+                        "src": "3170:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6178,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "3179:6:28",
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6053,
+                      "src": "3170:15:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "id": 6181,
+                          "name": "tokens",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6089,
+                          "src": "3196:6:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6180,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "3188:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint128_$",
+                          "typeString": "type(uint128)"
+                        },
+                        "typeName": {
+                          "id": 6179,
+                          "name": "uint128",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "3188:7:28",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 6182,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "3188:15:28",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "src": "3170:33:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "id": 6184,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3170:33:28"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "id": 6186,
+                        "name": "requestTokens",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6075,
+                        "src": "3229:13:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 6185,
+                      "name": "TokensConsumed",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6046,
+                      "src": "3214:14:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 6187,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3214:29:28",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6188,
+                  "nodeType": "EmitStatement",
+                  "src": "3209:34:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6070,
+              "nodeType": "StructuredDocumentation",
+              "src": "1626:374:28",
+              "text": "@notice _consume removes the given tokens from the pool, lowering the\n rate tokens allowed to be consumed for subsequent calls.\n @param requestTokens The total tokens to be consumed from the bucket.\n @dev Reverts when requestTokens exceeds bucket capacity or available tokens in the bucket\n @dev emits removal of requestTokens if requestTokens is > 0"
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_consume",
+            "nameLocation": "2012:8:28",
+            "parameters": {
+              "id": 6076,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6073,
+                  "mutability": "mutable",
+                  "name": "s_bucket",
+                  "nameLocation": "2041:8:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6190,
+                  "src": "2021:28:28",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                    "typeString": "struct RateLimiter.TokenBucket"
+                  },
+                  "typeName": {
+                    "id": 6072,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6071,
+                      "name": "TokenBucket",
+                      "nameLocations": [
+                        "2021:11:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6062,
+                      "src": "2021:11:28"
+                    },
+                    "referencedDeclaration": 6062,
+                    "src": "2021:11:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                      "typeString": "struct RateLimiter.TokenBucket"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6075,
+                  "mutability": "mutable",
+                  "name": "requestTokens",
+                  "nameLocation": "2059:13:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6190,
+                  "src": "2051:21:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6074,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2051:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2020:53:28"
+            },
+            "returnParameters": {
+              "id": 6077,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2083:0:28"
+            },
+            "scope": 6367,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 6234,
+            "nodeType": "FunctionDefinition",
+            "src": "3371:528:28",
+            "nodes": [],
+            "body": {
+              "id": 6233,
+              "nodeType": "Block",
+              "src": "3475:424:28",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "id": 6219,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6200,
+                        "name": "bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6194,
+                        "src": "3689:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket memory"
+                        }
+                      },
+                      "id": 6202,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "3696:6:28",
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6053,
+                      "src": "3689:13:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "expression": {
+                                "id": 6206,
+                                "name": "bucket",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6194,
+                                "src": "3737:6:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                                  "typeString": "struct RateLimiter.TokenBucket memory"
+                                }
+                              },
+                              "id": 6207,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "3744:8:28",
+                              "memberName": "capacity",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6059,
+                              "src": "3737:15:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            },
+                            {
+                              "expression": {
+                                "id": 6208,
+                                "name": "bucket",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6194,
+                                "src": "3754:6:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                                  "typeString": "struct RateLimiter.TokenBucket memory"
+                                }
+                              },
+                              "id": 6209,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "3761:6:28",
+                              "memberName": "tokens",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6053,
+                              "src": "3754:13:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            },
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 6214,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "expression": {
+                                  "id": 6210,
+                                  "name": "block",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": -4,
+                                  "src": "3769:5:28",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_block",
+                                    "typeString": "block"
+                                  }
+                                },
+                                "id": 6211,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberLocation": "3775:9:28",
+                                "memberName": "timestamp",
+                                "nodeType": "MemberAccess",
+                                "src": "3769:15:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "-",
+                              "rightExpression": {
+                                "expression": {
+                                  "id": 6212,
+                                  "name": "bucket",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 6194,
+                                  "src": "3787:6:28",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                                    "typeString": "struct RateLimiter.TokenBucket memory"
+                                  }
+                                },
+                                "id": 6213,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberLocation": "3794:11:28",
+                                "memberName": "lastUpdated",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 6055,
+                                "src": "3787:18:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                }
+                              },
+                              "src": "3769:36:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            {
+                              "expression": {
+                                "id": 6215,
+                                "name": "bucket",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6194,
+                                "src": "3807:6:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                                  "typeString": "struct RateLimiter.TokenBucket memory"
+                                }
+                              },
+                              "id": 6216,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "3814:4:28",
+                              "memberName": "rate",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6061,
+                              "src": "3807:11:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              },
+                              {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              },
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            ],
+                            "id": 6205,
+                            "name": "_calculateRefill",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6348,
+                            "src": "3720:16:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                              "typeString": "function (uint256,uint256,uint256,uint256) pure returns (uint256)"
+                            }
+                          },
+                          "id": 6217,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "3720:99:28",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6204,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "3705:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint128_$",
+                          "typeString": "type(uint128)"
+                        },
+                        "typeName": {
+                          "id": 6203,
+                          "name": "uint128",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "3705:7:28",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 6218,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "3705:120:28",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "src": "3689:136:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "id": 6220,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3689:136:28"
+                },
+                {
+                  "expression": {
+                    "id": 6229,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6221,
+                        "name": "bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6194,
+                        "src": "3831:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket memory"
+                        }
+                      },
+                      "id": 6223,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "3838:11:28",
+                      "memberName": "lastUpdated",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6055,
+                      "src": "3831:18:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "expression": {
+                            "id": 6226,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -4,
+                            "src": "3859:5:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6227,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "3865:9:28",
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "src": "3859:15:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6225,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "3852:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint32_$",
+                          "typeString": "type(uint32)"
+                        },
+                        "typeName": {
+                          "id": 6224,
+                          "name": "uint32",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "3852:6:28",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 6228,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "3852:23:28",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "src": "3831:44:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "id": 6230,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3831:44:28"
+                },
+                {
+                  "expression": {
+                    "id": 6231,
+                    "name": "bucket",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6194,
+                    "src": "3888:6:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                      "typeString": "struct RateLimiter.TokenBucket memory"
+                    }
+                  },
+                  "functionReturnParameters": 6199,
+                  "id": 6232,
+                  "nodeType": "Return",
+                  "src": "3881:13:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6191,
+              "nodeType": "StructuredDocumentation",
+              "src": "3252:116:28",
+              "text": "@notice Gets the token bucket with its values for the block it was requested at.\n @return The token bucket."
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_currentTokenBucketState",
+            "nameLocation": "3380:24:28",
+            "parameters": {
+              "id": 6195,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6194,
+                  "mutability": "mutable",
+                  "name": "bucket",
+                  "nameLocation": "3424:6:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6234,
+                  "src": "3405:25:28",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                    "typeString": "struct RateLimiter.TokenBucket"
+                  },
+                  "typeName": {
+                    "id": 6193,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6192,
+                      "name": "TokenBucket",
+                      "nameLocations": [
+                        "3405:11:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6062,
+                      "src": "3405:11:28"
+                    },
+                    "referencedDeclaration": 6062,
+                    "src": "3405:11:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                      "typeString": "struct RateLimiter.TokenBucket"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3404:27:28"
+            },
+            "returnParameters": {
+              "id": 6199,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6198,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6234,
+                  "src": "3455:18:28",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TokenBucket_$6062_memory_ptr",
+                    "typeString": "struct RateLimiter.TokenBucket"
+                  },
+                  "typeName": {
+                    "id": 6197,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6196,
+                      "name": "TokenBucket",
+                      "nameLocations": [
+                        "3455:11:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6062,
+                      "src": "3455:11:28"
+                    },
+                    "referencedDeclaration": 6062,
+                    "src": "3455:11:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                      "typeString": "struct RateLimiter.TokenBucket"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3454:20:28"
+            },
+            "scope": 6367,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 6324,
+            "nodeType": "FunctionDefinition",
+            "src": "4021:700:28",
+            "nodes": [],
+            "body": {
+              "id": 6323,
+              "nodeType": "Block",
+              "src": "4113:608:28",
+              "nodes": [],
+              "statements": [
+                {
+                  "assignments": [
+                    6245
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6245,
+                      "mutability": "mutable",
+                      "name": "timeDiff",
+                      "nameLocation": "4247:8:28",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6323,
+                      "src": "4239:16:28",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 6244,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "4239:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6251,
+                  "initialValue": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6250,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 6246,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -4,
+                        "src": "4258:5:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 6247,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "4264:9:28",
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "4258:15:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "-",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 6248,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6238,
+                        "src": "4276:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6249,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "4285:11:28",
+                      "memberName": "lastUpdated",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6055,
+                      "src": "4276:20:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "src": "4258:38:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "4239:57:28"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6254,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6252,
+                      "name": "timeDiff",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6245,
+                      "src": "4306:8:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 6253,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "4318:1:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "4306:13:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6283,
+                  "nodeType": "IfStatement",
+                  "src": "4302:193:28",
+                  "trueBody": {
+                    "id": 6282,
+                    "nodeType": "Block",
+                    "src": "4321:174:28",
+                    "statements": [
+                      {
+                        "expression": {
+                          "id": 6270,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "expression": {
+                              "id": 6255,
+                              "name": "s_bucket",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6238,
+                              "src": "4329:8:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                              }
+                            },
+                            "id": 6257,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberLocation": "4338:6:28",
+                            "memberName": "tokens",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 6053,
+                            "src": "4329:15:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint128",
+                              "typeString": "uint128"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "arguments": [
+                              {
+                                "arguments": [
+                                  {
+                                    "expression": {
+                                      "id": 6261,
+                                      "name": "s_bucket",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 6238,
+                                      "src": "4372:8:28",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                        "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                                      }
+                                    },
+                                    "id": 6262,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "4381:8:28",
+                                    "memberName": "capacity",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 6059,
+                                    "src": "4372:17:28",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint128",
+                                      "typeString": "uint128"
+                                    }
+                                  },
+                                  {
+                                    "expression": {
+                                      "id": 6263,
+                                      "name": "s_bucket",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 6238,
+                                      "src": "4391:8:28",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                        "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                                      }
+                                    },
+                                    "id": 6264,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "4400:6:28",
+                                    "memberName": "tokens",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 6053,
+                                    "src": "4391:15:28",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint128",
+                                      "typeString": "uint128"
+                                    }
+                                  },
+                                  {
+                                    "id": 6265,
+                                    "name": "timeDiff",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 6245,
+                                    "src": "4408:8:28",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  {
+                                    "expression": {
+                                      "id": 6266,
+                                      "name": "s_bucket",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 6238,
+                                      "src": "4418:8:28",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                        "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                                      }
+                                    },
+                                    "id": 6267,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "4427:4:28",
+                                    "memberName": "rate",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 6061,
+                                    "src": "4418:13:28",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint128",
+                                      "typeString": "uint128"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint128",
+                                      "typeString": "uint128"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint128",
+                                      "typeString": "uint128"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint128",
+                                      "typeString": "uint128"
+                                    }
+                                  ],
+                                  "id": 6260,
+                                  "name": "_calculateRefill",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 6348,
+                                  "src": "4355:16:28",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                                    "typeString": "function (uint256,uint256,uint256,uint256) pure returns (uint256)"
+                                  }
+                                },
+                                "id": 6268,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "functionCall",
+                                "lValueRequested": false,
+                                "nameLocations": [],
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "4355:77:28",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "id": 6259,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "4347:7:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_uint128_$",
+                                "typeString": "type(uint128)"
+                              },
+                              "typeName": {
+                                "id": 6258,
+                                "name": "uint128",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "4347:7:28",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 6269,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "4347:86:28",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint128",
+                              "typeString": "uint128"
+                            }
+                          },
+                          "src": "4329:104:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint128",
+                            "typeString": "uint128"
+                          }
+                        },
+                        "id": 6271,
+                        "nodeType": "ExpressionStatement",
+                        "src": "4329:104:28"
+                      },
+                      {
+                        "expression": {
+                          "id": 6280,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "expression": {
+                              "id": 6272,
+                              "name": "s_bucket",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6238,
+                              "src": "4442:8:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                              }
+                            },
+                            "id": 6274,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberLocation": "4451:11:28",
+                            "memberName": "lastUpdated",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 6055,
+                            "src": "4442:20:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "arguments": [
+                              {
+                                "expression": {
+                                  "id": 6277,
+                                  "name": "block",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": -4,
+                                  "src": "4472:5:28",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_block",
+                                    "typeString": "block"
+                                  }
+                                },
+                                "id": 6278,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberLocation": "4478:9:28",
+                                "memberName": "timestamp",
+                                "nodeType": "MemberAccess",
+                                "src": "4472:15:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "id": 6276,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "4465:6:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_uint32_$",
+                                "typeString": "type(uint32)"
+                              },
+                              "typeName": {
+                                "id": 6275,
+                                "name": "uint32",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "4465:6:28",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 6279,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "4465:23:28",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "src": "4442:46:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 6281,
+                        "nodeType": "ExpressionStatement",
+                        "src": "4442:46:28"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "id": 6296,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6284,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6238,
+                        "src": "4501:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6286,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "4510:6:28",
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6053,
+                      "src": "4501:15:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "expression": {
+                                "id": 6290,
+                                "name": "config",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6241,
+                                "src": "4532:6:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                                  "typeString": "struct RateLimiter.Config memory"
+                                }
+                              },
+                              "id": 6291,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "4539:8:28",
+                              "memberName": "capacity",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6066,
+                              "src": "4532:15:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            },
+                            {
+                              "expression": {
+                                "id": 6292,
+                                "name": "s_bucket",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6238,
+                                "src": "4549:8:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                                  "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                                }
+                              },
+                              "id": 6293,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "4558:6:28",
+                              "memberName": "tokens",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6053,
+                              "src": "4549:15:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              },
+                              {
+                                "typeIdentifier": "t_uint128",
+                                "typeString": "uint128"
+                              }
+                            ],
+                            "id": 6289,
+                            "name": "_min",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6366,
+                            "src": "4527:4:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                              "typeString": "function (uint256,uint256) pure returns (uint256)"
+                            }
+                          },
+                          "id": 6294,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "4527:38:28",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6288,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "4519:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint128_$",
+                          "typeString": "type(uint128)"
+                        },
+                        "typeName": {
+                          "id": 6287,
+                          "name": "uint128",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "4519:7:28",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 6295,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "4519:47:28",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "src": "4501:65:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "id": 6297,
+                  "nodeType": "ExpressionStatement",
+                  "src": "4501:65:28"
+                },
+                {
+                  "expression": {
+                    "id": 6303,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6298,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6238,
+                        "src": "4572:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6300,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "4581:9:28",
+                      "memberName": "isEnabled",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6057,
+                      "src": "4572:18:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 6301,
+                        "name": "config",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6241,
+                        "src": "4593:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                          "typeString": "struct RateLimiter.Config memory"
+                        }
+                      },
+                      "id": 6302,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "4600:9:28",
+                      "memberName": "isEnabled",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6064,
+                      "src": "4593:16:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "4572:37:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6304,
+                  "nodeType": "ExpressionStatement",
+                  "src": "4572:37:28"
+                },
+                {
+                  "expression": {
+                    "id": 6310,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6305,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6238,
+                        "src": "4615:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6307,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "4624:8:28",
+                      "memberName": "capacity",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6059,
+                      "src": "4615:17:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 6308,
+                        "name": "config",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6241,
+                        "src": "4635:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                          "typeString": "struct RateLimiter.Config memory"
+                        }
+                      },
+                      "id": 6309,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "4642:8:28",
+                      "memberName": "capacity",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6066,
+                      "src": "4635:15:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "src": "4615:35:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "id": 6311,
+                  "nodeType": "ExpressionStatement",
+                  "src": "4615:35:28"
+                },
+                {
+                  "expression": {
+                    "id": 6317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 6312,
+                        "name": "s_bucket",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6238,
+                        "src": "4656:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                          "typeString": "struct RateLimiter.TokenBucket storage pointer"
+                        }
+                      },
+                      "id": 6314,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "4665:4:28",
+                      "memberName": "rate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6061,
+                      "src": "4656:13:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 6315,
+                        "name": "config",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6241,
+                        "src": "4672:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                          "typeString": "struct RateLimiter.Config memory"
+                        }
+                      },
+                      "id": 6316,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "4679:4:28",
+                      "memberName": "rate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6068,
+                      "src": "4672:11:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "src": "4656:27:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "id": 6318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "4656:27:28"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "id": 6320,
+                        "name": "config",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6241,
+                        "src": "4709:6:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                          "typeString": "struct RateLimiter.Config memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                          "typeString": "struct RateLimiter.Config memory"
+                        }
+                      ],
+                      "id": 6319,
+                      "name": "ConfigChanged",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6051,
+                      "src": "4695:13:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_struct$_Config_$6069_memory_ptr_$returns$__$",
+                        "typeString": "function (struct RateLimiter.Config memory)"
+                      }
+                    },
+                    "id": 6321,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "4695:21:28",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6322,
+                  "nodeType": "EmitStatement",
+                  "src": "4690:26:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6235,
+              "nodeType": "StructuredDocumentation",
+              "src": "3903:115:28",
+              "text": "@notice Sets the rate limited config.\n @param s_bucket The token bucket\n @param config The new config"
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setTokenBucketConfig",
+            "nameLocation": "4030:21:28",
+            "parameters": {
+              "id": 6242,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6238,
+                  "mutability": "mutable",
+                  "name": "s_bucket",
+                  "nameLocation": "4072:8:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6324,
+                  "src": "4052:28:28",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                    "typeString": "struct RateLimiter.TokenBucket"
+                  },
+                  "typeName": {
+                    "id": 6237,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6236,
+                      "name": "TokenBucket",
+                      "nameLocations": [
+                        "4052:11:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6062,
+                      "src": "4052:11:28"
+                    },
+                    "referencedDeclaration": 6062,
+                    "src": "4052:11:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TokenBucket_$6062_storage_ptr",
+                      "typeString": "struct RateLimiter.TokenBucket"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6241,
+                  "mutability": "mutable",
+                  "name": "config",
+                  "nameLocation": "4096:6:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6324,
+                  "src": "4082:20:28",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Config_$6069_memory_ptr",
+                    "typeString": "struct RateLimiter.Config"
+                  },
+                  "typeName": {
+                    "id": 6240,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6239,
+                      "name": "Config",
+                      "nameLocations": [
+                        "4082:6:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6069,
+                      "src": "4082:6:28"
+                    },
+                    "referencedDeclaration": 6069,
+                    "src": "4082:6:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Config_$6069_storage_ptr",
+                      "typeString": "struct RateLimiter.Config"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4051:52:28"
+            },
+            "returnParameters": {
+              "id": 6243,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4113:0:28"
+            },
+            "scope": 6367,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 6348,
+            "nodeType": "FunctionDefinition",
+            "src": "4991:201:28",
+            "nodes": [],
+            "body": {
+              "id": 6347,
+              "nodeType": "Block",
+              "src": "5134:58:28",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 6339,
+                        "name": "capacity",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6327,
+                        "src": "5152:8:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 6344,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 6340,
+                          "name": "tokens",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6329,
+                          "src": "5162:6:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "+",
+                        "rightExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 6343,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 6341,
+                            "name": "timeDiff",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6331,
+                            "src": "5171:8:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "*",
+                          "rightExpression": {
+                            "id": 6342,
+                            "name": "rate",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6333,
+                            "src": "5182:4:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "5171:15:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "5162:24:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 6338,
+                      "name": "_min",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6366,
+                      "src": "5147:4:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                        "typeString": "function (uint256,uint256) pure returns (uint256)"
+                      }
+                    },
+                    "id": 6345,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "5147:40:28",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 6337,
+                  "id": 6346,
+                  "nodeType": "Return",
+                  "src": "5140:47:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6325,
+              "nodeType": "StructuredDocumentation",
+              "src": "4725:263:28",
+              "text": "@notice Calculate refilled tokens\n @param capacity bucket capacity\n @param tokens current bucket tokens\n @param timeDiff block time difference since last refill\n @param rate bucket refill rate\n @return the value of tokens after refill"
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_calculateRefill",
+            "nameLocation": "5000:16:28",
+            "parameters": {
+              "id": 6334,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6327,
+                  "mutability": "mutable",
+                  "name": "capacity",
+                  "nameLocation": "5030:8:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6348,
+                  "src": "5022:16:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6326,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5022:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6329,
+                  "mutability": "mutable",
+                  "name": "tokens",
+                  "nameLocation": "5052:6:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6348,
+                  "src": "5044:14:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6328,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5044:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6331,
+                  "mutability": "mutable",
+                  "name": "timeDiff",
+                  "nameLocation": "5072:8:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6348,
+                  "src": "5064:16:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6330,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5064:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6333,
+                  "mutability": "mutable",
+                  "name": "rate",
+                  "nameLocation": "5094:4:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6348,
+                  "src": "5086:12:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6332,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5086:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5016:86:28"
+            },
+            "returnParameters": {
+              "id": 6337,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6336,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6348,
+                  "src": "5125:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6335,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5125:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5124:9:28"
+            },
+            "scope": 6367,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "private"
+          },
+          {
+            "id": 6366,
+            "nodeType": "FunctionDefinition",
+            "src": "5320:99:28",
+            "nodes": [],
+            "body": {
+              "id": 6365,
+              "nodeType": "Block",
+              "src": "5388:31:28",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "condition": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 6360,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 6358,
+                        "name": "a",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6351,
+                        "src": "5401:1:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "<",
+                      "rightExpression": {
+                        "id": 6359,
+                        "name": "b",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6353,
+                        "src": "5405:1:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "5401:5:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseExpression": {
+                      "id": 6362,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6353,
+                      "src": "5413:1:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 6363,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "Conditional",
+                    "src": "5401:13:28",
+                    "trueExpression": {
+                      "id": 6361,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6351,
+                      "src": "5409:1:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 6357,
+                  "id": 6364,
+                  "nodeType": "Return",
+                  "src": "5394:20:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6349,
+              "nodeType": "StructuredDocumentation",
+              "src": "5196:121:28",
+              "text": "@notice Return the smallest of two integers\n @param a first int\n @param b second int\n @return smallest"
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_min",
+            "nameLocation": "5329:4:28",
+            "parameters": {
+              "id": 6354,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6351,
+                  "mutability": "mutable",
+                  "name": "a",
+                  "nameLocation": "5342:1:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6366,
+                  "src": "5334:9:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6350,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5334:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6353,
+                  "mutability": "mutable",
+                  "name": "b",
+                  "nameLocation": "5353:1:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6366,
+                  "src": "5345:9:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6352,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5345:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5333:22:28"
+            },
+            "returnParameters": {
+              "id": 6357,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6356,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6366,
+                  "src": "5379:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6355,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5379:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5378:9:28"
+            },
+            "scope": 6367,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "RateLimiter",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 6028,
+          "nodeType": "StructuredDocumentation",
+          "src": "100:511:28",
+          "text": "@notice Implements Token Bucket rate limiting.\n @dev uint128 is safe for rate limiter state.\n For USD value rate limiting, it can adequately store USD value in 18 decimals.\n For ERC20 token amount rate limiting, all tokens that will be listed will have at most\n a supply of uint128.max tokens, and it will therefore not overflow the bucket.\n In exceptional scenarios where tokens consumed may be larger than uint128,\n e.g. compromised issuer, an enabled RateLimiter will check and revert."
+        },
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          6367
+        ],
+        "name": "RateLimiter",
+        "nameLocation": "619:11:28",
+        "scope": 6368,
+        "usedErrors": [
+          6030,
+          6036,
+          6040,
+          6042
+        ]
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 28
+}

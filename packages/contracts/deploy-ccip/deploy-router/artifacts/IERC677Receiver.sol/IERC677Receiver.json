@@ -1,0 +1,266 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onTokenTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "onTokenTransfer(address,uint256,bytes)": "a4c0ed36"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onTokenTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IERC677Receiver.sol\":\"IERC677Receiver\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/IERC677Receiver.sol\":{\"keccak256\":\"0x3fd7cf3bc195c3e046ece62f1654d906d8f653edc705db18dcc409703d21dd91\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://f10cac0c126d2cd3950c9b7cbb352d4878816df8448c261c04615b5a99ea8f76\",\"dweb:/ipfs/QmRYxa6RRG4Rfa2pCeSKK9o8j5htJxLbL4xwTrN9t8mCNs\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onTokenTransfer"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/IERC677Receiver.sol": "IERC677Receiver"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/IERC677Receiver.sol": {
+        "keccak256": "0x3fd7cf3bc195c3e046ece62f1654d906d8f653edc705db18dcc409703d21dd91",
+        "urls": [
+          "bzz-raw://f10cac0c126d2cd3950c9b7cbb352d4878816df8448c261c04615b5a99ea8f76",
+          "dweb:/ipfs/QmRYxa6RRG4Rfa2pCeSKK9o8j5htJxLbL4xwTrN9t8mCNs"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/IERC677Receiver.sol",
+    "id": 5293,
+    "exportedSymbols": {
+      "IERC677Receiver": [
+        5292
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:145:15",
+    "nodes": [
+      {
+        "id": 5282,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:15",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5292,
+        "nodeType": "ContractDefinition",
+        "src": "62:119:15",
+        "nodes": [
+          {
+            "id": 5291,
+            "nodeType": "FunctionDefinition",
+            "src": "92:87:15",
+            "nodes": [],
+            "functionSelector": "a4c0ed36",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onTokenTransfer",
+            "nameLocation": "101:15:15",
+            "parameters": {
+              "id": 5289,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5284,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nameLocation": "125:6:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5291,
+                  "src": "117:14:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5283,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "117:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5286,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "141:6:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5291,
+                  "src": "133:14:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5285,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "133:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5288,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "164:4:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5291,
+                  "src": "149:19:15",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 5287,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "149:5:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "116:53:15"
+            },
+            "returnParameters": {
+              "id": 5290,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "178:0:15"
+            },
+            "scope": 5292,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IERC677Receiver",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5292
+        ],
+        "name": "IERC677Receiver",
+        "nameLocation": "72:15:15",
+        "scope": 5293,
+        "usedErrors": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 15
+}

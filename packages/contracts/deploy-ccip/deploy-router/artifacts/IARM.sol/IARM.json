@@ -1,0 +1,442 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "commitStore",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "root",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct IARM.TaggedRoot",
+          "name": "taggedRoot",
+          "type": "tuple"
+        }
+      ],
+      "name": "isBlessed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isCursed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "isBlessed((address,bytes32))": "4d616771",
+    "isCursed()": "397796f7"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"commitStore\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"root\",\"type\":\"bytes32\"}],\"internalType\":\"struct IARM.TaggedRoot\",\"name\":\"taggedRoot\",\"type\":\"tuple\"}],\"name\":\"isBlessed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isCursed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"isBlessed((address,bytes32))\":{\"notice\":\"Callers MUST NOT cache the return value as a blessed tagged root could become unblessed.\"},\"isCursed()\":{\"notice\":\"When the ARM is \\\"cursed\\\", CCIP pauses until the curse is lifted.\"}},\"notice\":\"This interface contains the only ARM-related functions that might be used on-chain by other CCIP contracts.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IARM.sol\":\"IARM\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/IARM.sol\":{\"keccak256\":\"0xc1a47bbb0eecc53a16a2d44e3b951707e07d2777cf27411a3eb95c652155c7ad\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://351ed829b0f93293bcef7f1c8c7fc7963c619aacdc81fd2cb03871a4a9b3de49\",\"dweb:/ipfs/QmR8QZzTkcLrXwsBu3NjRDGnBBSMbvJSLApKBpFd1UZPJW\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "struct IARM.TaggedRoot",
+              "name": "taggedRoot",
+              "type": "tuple",
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "commitStore",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "root",
+                  "type": "bytes32"
+                }
+              ]
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "isBlessed",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "isCursed",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "isBlessed((address,bytes32))": {
+            "notice": "Callers MUST NOT cache the return value as a blessed tagged root could become unblessed."
+          },
+          "isCursed()": {
+            "notice": "When the ARM is \"cursed\", CCIP pauses until the curse is lifted."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/IARM.sol": "IARM"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/IARM.sol": {
+        "keccak256": "0xc1a47bbb0eecc53a16a2d44e3b951707e07d2777cf27411a3eb95c652155c7ad",
+        "urls": [
+          "bzz-raw://351ed829b0f93293bcef7f1c8c7fc7963c619aacdc81fd2cb03871a4a9b3de49",
+          "dweb:/ipfs/QmR8QZzTkcLrXwsBu3NjRDGnBBSMbvJSLApKBpFd1UZPJW"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/IARM.sol",
+    "id": 5199,
+    "exportedSymbols": {
+      "IARM": [
+        5198
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:653:10",
+    "nodes": [
+      {
+        "id": 5176,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:10",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5198,
+        "nodeType": "ContractDefinition",
+        "src": "182:507:10",
+        "nodes": [
+          {
+            "id": 5182,
+            "nodeType": "StructDefinition",
+            "src": "302:66:10",
+            "nodes": [],
+            "canonicalName": "IARM.TaggedRoot",
+            "members": [
+              {
+                "constant": false,
+                "id": 5179,
+                "mutability": "mutable",
+                "name": "commitStore",
+                "nameLocation": "334:11:10",
+                "nodeType": "VariableDeclaration",
+                "scope": 5182,
+                "src": "326:19:10",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 5178,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "326:7:10",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5181,
+                "mutability": "mutable",
+                "name": "root",
+                "nameLocation": "359:4:10",
+                "nodeType": "VariableDeclaration",
+                "scope": 5182,
+                "src": "351:12:10",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 5180,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "351:7:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "TaggedRoot",
+            "nameLocation": "309:10:10",
+            "scope": 5198,
+            "visibility": "public"
+          },
+          {
+            "id": 5191,
+            "nodeType": "FunctionDefinition",
+            "src": "475:80:10",
+            "nodes": [],
+            "documentation": {
+              "id": 5183,
+              "nodeType": "StructuredDocumentation",
+              "src": "372:100:10",
+              "text": "@notice Callers MUST NOT cache the return value as a blessed tagged root could become unblessed."
+            },
+            "functionSelector": "4d616771",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isBlessed",
+            "nameLocation": "484:9:10",
+            "parameters": {
+              "id": 5187,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5186,
+                  "mutability": "mutable",
+                  "name": "taggedRoot",
+                  "nameLocation": "514:10:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5191,
+                  "src": "494:30:10",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TaggedRoot_$5182_calldata_ptr",
+                    "typeString": "struct IARM.TaggedRoot"
+                  },
+                  "typeName": {
+                    "id": 5185,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 5184,
+                      "name": "TaggedRoot",
+                      "nameLocations": [
+                        "494:10:10"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 5182,
+                      "src": "494:10:10"
+                    },
+                    "referencedDeclaration": 5182,
+                    "src": "494:10:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TaggedRoot_$5182_storage_ptr",
+                      "typeString": "struct IARM.TaggedRoot"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "493:32:10"
+            },
+            "returnParameters": {
+              "id": 5190,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5189,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5191,
+                  "src": "549:4:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5188,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "549:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "548:6:10"
+            },
+            "scope": 5198,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5197,
+            "nodeType": "FunctionDefinition",
+            "src": "638:49:10",
+            "nodes": [],
+            "documentation": {
+              "id": 5192,
+              "nodeType": "StructuredDocumentation",
+              "src": "559:76:10",
+              "text": "@notice When the ARM is \"cursed\", CCIP pauses until the curse is lifted."
+            },
+            "functionSelector": "397796f7",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isCursed",
+            "nameLocation": "647:8:10",
+            "parameters": {
+              "id": 5193,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "655:2:10"
+            },
+            "returnParameters": {
+              "id": 5196,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5195,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5197,
+                  "src": "681:4:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5194,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "681:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "680:6:10"
+            },
+            "scope": 5198,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IARM",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 5177,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:120:10",
+          "text": "@notice This interface contains the only ARM-related functions that might be used on-chain by other CCIP contracts."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5198
+        ],
+        "name": "IARM",
+        "nameLocation": "192:4:10",
+        "scope": 5199,
+        "usedErrors": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 10
+}

@@ -1,0 +1,198 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "linkAvailableForPayment",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "availableBalance",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "linkAvailableForPayment()": "d09dc339"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"linkAvailableForPayment\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"availableBalance\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Implement this contract so that a keeper-compatible contract can monitor and fund the implementation contract with LINK if it falls below a defined threshold.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/automation/ILinkAvailable.sol\":\"ILinkAvailable\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/automation/ILinkAvailable.sol\":{\"keccak256\":\"0x531912fbd803a8712d87ac7b9a16afc725ec66997e7aed97567431179848ca34\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://3b514790bee46c2ff12ca4c707ba16be5487ef9532f86359e07db878b8ffff50\",\"dweb:/ipfs/QmPv2B8PnQBFRMjKV6WMz76drwMzeq6FZ2hAHVHyADxqY3\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "linkAvailableForPayment",
+          "outputs": [
+            {
+              "internalType": "int256",
+              "name": "availableBalance",
+              "type": "int256"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/automation/ILinkAvailable.sol": "ILinkAvailable"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/automation/ILinkAvailable.sol": {
+        "keccak256": "0x531912fbd803a8712d87ac7b9a16afc725ec66997e7aed97567431179848ca34",
+        "urls": [
+          "bzz-raw://3b514790bee46c2ff12ca4c707ba16be5487ef9532f86359e07db878b8ffff50",
+          "dweb:/ipfs/QmPv2B8PnQBFRMjKV6WMz76drwMzeq6FZ2hAHVHyADxqY3"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/automation/ILinkAvailable.sol",
+    "id": 5543,
+    "exportedSymbols": {
+      "ILinkAvailable": [
+        5542
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:315:22",
+    "nodes": [
+      {
+        "id": 5535,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:22",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5542,
+        "nodeType": "ContractDefinition",
+        "src": "237:114:22",
+        "nodes": [
+          {
+            "id": 5541,
+            "nodeType": "FunctionDefinition",
+            "src": "266:83:22",
+            "nodes": [],
+            "functionSelector": "d09dc339",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "linkAvailableForPayment",
+            "nameLocation": "275:23:22",
+            "parameters": {
+              "id": 5537,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "298:2:22"
+            },
+            "returnParameters": {
+              "id": 5540,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5539,
+                  "mutability": "mutable",
+                  "name": "availableBalance",
+                  "nameLocation": "331:16:22",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5541,
+                  "src": "324:23:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 5538,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:6:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "323:25:22"
+            },
+            "scope": 5542,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ILinkAvailable",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 5536,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:175:22",
+          "text": "@notice Implement this contract so that a keeper-compatible contract can monitor\n and fund the implementation contract with LINK if it falls below a defined threshold."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5542
+        ],
+        "name": "ILinkAvailable",
+        "nameLocation": "247:14:22",
+        "scope": 5543,
+        "usedErrors": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 22
+}

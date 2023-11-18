@@ -1,0 +1,192 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "typeAndVersion",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "typeAndVersion()": "181f5a77"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ITypeAndVersion.sol\":\"ITypeAndVersion\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/ITypeAndVersion.sol\":{\"keccak256\":\"0x7fb4ee7e597096cf09a1fa0d7c752be16d8eb1403a8c5cdb967670b29c640e2d\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://1101ac2a3616dc8cb856cb4a8bb00d2862824bc992f62c05f41c47d104e4def8\",\"dweb:/ipfs/QmXXMBm3Cp1HPzBm4ECmPJRCyHmPLzwLxkZmyFxeiLYqXE\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "pure",
+          "type": "function",
+          "name": "typeAndVersion",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/ITypeAndVersion.sol": "ITypeAndVersion"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/ITypeAndVersion.sol": {
+        "keccak256": "0x7fb4ee7e597096cf09a1fa0d7c752be16d8eb1403a8c5cdb967670b29c640e2d",
+        "urls": [
+          "bzz-raw://1101ac2a3616dc8cb856cb4a8bb00d2862824bc992f62c05f41c47d104e4def8",
+          "dweb:/ipfs/QmXXMBm3Cp1HPzBm4ECmPJRCyHmPLzwLxkZmyFxeiLYqXE"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/ITypeAndVersion.sol",
+    "id": 5524,
+    "exportedSymbols": {
+      "ITypeAndVersion": [
+        5523
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:139:20",
+    "nodes": [
+      {
+        "id": 5517,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:20",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5523,
+        "nodeType": "ContractDefinition",
+        "src": "62:114:20",
+        "nodes": [
+          {
+            "id": 5522,
+            "nodeType": "FunctionDefinition",
+            "src": "102:72:20",
+            "nodes": [],
+            "functionSelector": "181f5a77",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "typeAndVersion",
+            "nameLocation": "111:14:20",
+            "parameters": {
+              "id": 5518,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "125:2:20"
+            },
+            "returnParameters": {
+              "id": 5521,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5520,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5522,
+                  "src": "159:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 5519,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "159:6:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "158:15:20"
+            },
+            "scope": 5523,
+            "stateMutability": "pure",
+            "virtual": true,
+            "visibility": "external"
+          }
+        ],
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "ITypeAndVersion",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5523
+        ],
+        "name": "ITypeAndVersion",
+        "nameLocation": "80:15:20",
+        "scope": 5524,
+        "usedErrors": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 20
+}

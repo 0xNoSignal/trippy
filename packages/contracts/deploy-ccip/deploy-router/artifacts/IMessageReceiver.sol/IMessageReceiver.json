@@ -1,0 +1,284 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "attestation",
+          "type": "bytes"
+        }
+      ],
+      "name": "receiveMessage",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "receiveMessage(bytes,bytes)": "57ecfd28"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"attestation\",\"type\":\"bytes\"}],\"name\":\"receiveMessage\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"receiveMessage(bytes,bytes)\":{\"params\":{\"message\":\"The original message on the source chain     * Message format:     * Field                 Bytes      Type       Index     * version               4          uint32     0     * sourceDomain          4          uint32     4     * destinationDomain     4          uint32     8     * nonce                 8          uint64     12     * sender                32         bytes32    20     * recipient             32         bytes32    52     * messageBody           dynamic    bytes      84 param attestation A valid attestation is the concatenated 65-byte signature(s) of exactly `thresholdSignature` signatures, in increasing order of attester address. ***If the attester addresses recovered from signatures are not in increasing order, signature verification will fail.*** If incorrect number of signatures or duplicate signatures are supplied, signature verification will fail.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"receiveMessage(bytes,bytes)\":{\"notice\":\"Unlocks USDC tokens on the destination chain\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/pools/USDC/IMessageReceiver.sol\":\"IMessageReceiver\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/pools/USDC/IMessageReceiver.sol\":{\"keccak256\":\"0xcdf01e71444a9961eb8749d78e9f81794b374014bb2284e2d6a5577796ff5a48\",\"urls\":[\"bzz-raw://c4b1fef8df186063a47fb5b6304439b303e93742ead96853439ee34c00e3db6f\",\"dweb:/ipfs/QmYbz9Po9aYyBxjeH5mmyNzvhSgiecShX2St9n2XcpUXLE\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "message",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "attestation",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "receiveMessage",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "success",
+              "type": "bool"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "receiveMessage(bytes,bytes)": {
+            "params": {
+              "message": "The original message on the source chain     * Message format:     * Field                 Bytes      Type       Index     * version               4          uint32     0     * sourceDomain          4          uint32     4     * destinationDomain     4          uint32     8     * nonce                 8          uint64     12     * sender                32         bytes32    20     * recipient             32         bytes32    52     * messageBody           dynamic    bytes      84 param attestation A valid attestation is the concatenated 65-byte signature(s) of exactly `thresholdSignature` signatures, in increasing order of attester address. ***If the attester addresses recovered from signatures are not in increasing order, signature verification will fail.*** If incorrect number of signatures or duplicate signatures are supplied, signature verification will fail."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "receiveMessage(bytes,bytes)": {
+            "notice": "Unlocks USDC tokens on the destination chain"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/pools/USDC/IMessageReceiver.sol": "IMessageReceiver"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/pools/USDC/IMessageReceiver.sol": {
+        "keccak256": "0xcdf01e71444a9961eb8749d78e9f81794b374014bb2284e2d6a5577796ff5a48",
+        "urls": [
+          "bzz-raw://c4b1fef8df186063a47fb5b6304439b303e93742ead96853439ee34c00e3db6f",
+          "dweb:/ipfs/QmYbz9Po9aYyBxjeH5mmyNzvhSgiecShX2St9n2XcpUXLE"
+        ],
+        "license": null
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/pools/USDC/IMessageReceiver.sol",
+    "id": 12728,
+    "exportedSymbols": {
+      "IMessageReceiver": [
+        12727
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "619:1215:39",
+    "nodes": [
+      {
+        "id": 12716,
+        "nodeType": "PragmaDirective",
+        "src": "619:23:39",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 12727,
+        "nodeType": "ContractDefinition",
+        "src": "644:1189:39",
+        "nodes": [
+          {
+            "id": 12726,
+            "nodeType": "FunctionDefinition",
+            "src": "1723:108:39",
+            "nodes": [],
+            "documentation": {
+              "id": 12717,
+              "nodeType": "StructuredDocumentation",
+              "src": "675:1045:39",
+              "text": "@notice Unlocks USDC tokens on the destination chain\n @param message The original message on the source chain\n     * Message format:\n     * Field                 Bytes      Type       Index\n     * version               4          uint32     0\n     * sourceDomain          4          uint32     4\n     * destinationDomain     4          uint32     8\n     * nonce                 8          uint64     12\n     * sender                32         bytes32    20\n     * recipient             32         bytes32    52\n     * messageBody           dynamic    bytes      84\n param attestation A valid attestation is the concatenated 65-byte signature(s) of\n exactly `thresholdSignature` signatures, in increasing order of attester address.\n ***If the attester addresses recovered from signatures are not in increasing order,\n signature verification will fail.***\n If incorrect number of signatures or duplicate signatures are supplied,\n signature verification will fail."
+            },
+            "functionSelector": "57ecfd28",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "receiveMessage",
+            "nameLocation": "1732:14:39",
+            "parameters": {
+              "id": 12722,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12719,
+                  "mutability": "mutable",
+                  "name": "message",
+                  "nameLocation": "1762:7:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12726,
+                  "src": "1747:22:39",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 12718,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1747:5:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12721,
+                  "mutability": "mutable",
+                  "name": "attestation",
+                  "nameLocation": "1786:11:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12726,
+                  "src": "1771:26:39",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 12720,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1771:5:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1746:52:39"
+            },
+            "returnParameters": {
+              "id": 12725,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12724,
+                  "mutability": "mutable",
+                  "name": "success",
+                  "nameLocation": "1822:7:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12726,
+                  "src": "1817:12:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12723,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1817:4:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1816:14:39"
+            },
+            "scope": 12727,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMessageReceiver",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          12727
+        ],
+        "name": "IMessageReceiver",
+        "nameLocation": "654:16:39",
+        "scope": 12728,
+        "usedErrors": []
+      }
+    ]
+  },
+  "id": 39
+}

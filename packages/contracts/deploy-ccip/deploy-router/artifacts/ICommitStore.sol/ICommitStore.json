@@ -1,0 +1,430 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getExpectedNextSequenceNumber",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "sequenceNumber",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "hashedLeaves",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "proofs",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "proofFlagBits",
+          "type": "uint256"
+        }
+      ],
+      "name": "verify",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "getExpectedNextSequenceNumber()": "4120fccd",
+    "verify(bytes32[],bytes32[],uint256)": "32048875"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getExpectedNextSequenceNumber\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"sequenceNumber\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"hashedLeaves\",\"type\":\"bytes32[]\"},{\"internalType\":\"bytes32[]\",\"name\":\"proofs\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"proofFlagBits\",\"type\":\"uint256\"}],\"name\":\"verify\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"verify(bytes32[],bytes32[],uint256)\":{\"details\":\"This method uses a merkle tree within a merkle tree, with the hashedLeaves, proofs and proofFlagBits being used to get the root of the inner tree. This root is then used as the singular leaf of the outer tree.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getExpectedNextSequenceNumber()\":{\"notice\":\"Returns the expected next sequence number\"},\"verify(bytes32[],bytes32[],uint256)\":{\"notice\":\"Returns timestamp of when root was accepted or 0 if verification fails.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/ICommitStore.sol\":\"ICommitStore\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/ICommitStore.sol\":{\"keccak256\":\"0x2c4e0c7a920ef51a4ff7239fab4600071455011ebf1b96ae2af1d7e427852fc7\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://47276b4b8bef495520fa2968cd7769327b2bc23615c2bab14053d5497ee1a31f\",\"dweb:/ipfs/QmSnSqXFFH1rYRsxdaGW74vJckDCTpZve2wREybM8iTiz4\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getExpectedNextSequenceNumber",
+          "outputs": [
+            {
+              "internalType": "uint64",
+              "name": "sequenceNumber",
+              "type": "uint64"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32[]",
+              "name": "hashedLeaves",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "proofs",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "proofFlagBits",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "verify",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "verify(bytes32[],bytes32[],uint256)": {
+            "details": "This method uses a merkle tree within a merkle tree, with the hashedLeaves, proofs and proofFlagBits being used to get the root of the inner tree. This root is then used as the singular leaf of the outer tree."
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "getExpectedNextSequenceNumber()": {
+            "notice": "Returns the expected next sequence number"
+          },
+          "verify(bytes32[],bytes32[],uint256)": {
+            "notice": "Returns timestamp of when root was accepted or 0 if verification fails."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/ICommitStore.sol": "ICommitStore"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/ICommitStore.sol": {
+        "keccak256": "0x2c4e0c7a920ef51a4ff7239fab4600071455011ebf1b96ae2af1d7e427852fc7",
+        "urls": [
+          "bzz-raw://47276b4b8bef495520fa2968cd7769327b2bc23615c2bab14053d5497ee1a31f",
+          "dweb:/ipfs/QmSnSqXFFH1rYRsxdaGW74vJckDCTpZve2wREybM8iTiz4"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/ICommitStore.sol",
+    "id": 5246,
+    "exportedSymbols": {
+      "ICommitStore": [
+        5245
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:673:13",
+    "nodes": [
+      {
+        "id": 5224,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:13",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5245,
+        "nodeType": "ContractDefinition",
+        "src": "62:647:13",
+        "nodes": [
+          {
+            "id": 5238,
+            "nodeType": "FunctionDefinition",
+            "src": "408:152:13",
+            "nodes": [],
+            "documentation": {
+              "id": 5225,
+              "nodeType": "StructuredDocumentation",
+              "src": "89:316:13",
+              "text": "@notice Returns timestamp of when root was accepted or 0 if verification fails.\n @dev This method uses a merkle tree within a merkle tree, with the hashedLeaves,\n proofs and proofFlagBits being used to get the root of the inner tree.\n This root is then used as the singular leaf of the outer tree."
+            },
+            "functionSelector": "32048875",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verify",
+            "nameLocation": "417:6:13",
+            "parameters": {
+              "id": 5234,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5228,
+                  "mutability": "mutable",
+                  "name": "hashedLeaves",
+                  "nameLocation": "448:12:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5238,
+                  "src": "429:31:13",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_calldata_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 5226,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "429:7:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 5227,
+                    "nodeType": "ArrayTypeName",
+                    "src": "429:9:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5231,
+                  "mutability": "mutable",
+                  "name": "proofs",
+                  "nameLocation": "485:6:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5238,
+                  "src": "466:25:13",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_calldata_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 5229,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "466:7:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 5230,
+                    "nodeType": "ArrayTypeName",
+                    "src": "466:9:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5233,
+                  "mutability": "mutable",
+                  "name": "proofFlagBits",
+                  "nameLocation": "505:13:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5238,
+                  "src": "497:21:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5232,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "497:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "423:99:13"
+            },
+            "returnParameters": {
+              "id": 5237,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5236,
+                  "mutability": "mutable",
+                  "name": "timestamp",
+                  "nameLocation": "549:9:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5238,
+                  "src": "541:17:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5235,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "541:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "540:19:13"
+            },
+            "scope": 5245,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5244,
+            "nodeType": "FunctionDefinition",
+            "src": "620:87:13",
+            "nodes": [],
+            "documentation": {
+              "id": 5239,
+              "nodeType": "StructuredDocumentation",
+              "src": "564:53:13",
+              "text": "@notice Returns the expected next sequence number"
+            },
+            "functionSelector": "4120fccd",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExpectedNextSequenceNumber",
+            "nameLocation": "629:29:13",
+            "parameters": {
+              "id": 5240,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "658:2:13"
+            },
+            "returnParameters": {
+              "id": 5243,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5242,
+                  "mutability": "mutable",
+                  "name": "sequenceNumber",
+                  "nameLocation": "691:14:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5244,
+                  "src": "684:21:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 5241,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "684:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "683:23:13"
+            },
+            "scope": 5245,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ICommitStore",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5245
+        ],
+        "name": "ICommitStore",
+        "nameLocation": "72:12:13",
+        "scope": 5246,
+        "usedErrors": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 13
+}

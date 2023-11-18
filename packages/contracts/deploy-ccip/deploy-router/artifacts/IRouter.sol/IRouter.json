@@ -1,0 +1,520 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "OnlyOffRamp",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "messageId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "sourceChainSelector",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes",
+              "name": "sender",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct Client.EVMTokenAmount[]",
+              "name": "destTokenAmounts",
+              "type": "tuple[]"
+            }
+          ],
+          "internalType": "struct Client.Any2EVMMessage",
+          "name": "message",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint16",
+          "name": "gasForCallExactCheck",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "gasLimit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        }
+      ],
+      "name": "routeMessage",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)": "3cf97983"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"OnlyOffRamp\",\"type\":\"error\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"sourceChainSelector\",\"type\":\"uint64\"},{\"internalType\":\"bytes\",\"name\":\"sender\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"struct Client.EVMTokenAmount[]\",\"name\":\"destTokenAmounts\",\"type\":\"tuple[]\"}],\"internalType\":\"struct Client.Any2EVMMessage\",\"name\":\"message\",\"type\":\"tuple\"},{\"internalType\":\"uint16\",\"name\":\"gasForCallExactCheck\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"routeMessage\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)\":{\"details\":\"if the receiver is a contracts that signals support for CCIP execution through EIP-165. the contract is called. If not, only tokens are transferred.\",\"params\":{\"gasForCallExactCheck\":\"of params for exec\",\"gasLimit\":\"set of params for exec\",\"message\":\"Client.Any2EVMMessage struct.\",\"receiver\":\"set of params for exec\"},\"returns\":{\"success\":\"A boolean value indicating whether the ccip message was received without errors.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)\":{\"notice\":\"Route the message to its intended receiver contract.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IRouter.sol\":\"IRouter\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":30000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/IRouter.sol\":{\"keccak256\":\"0x6bde62bdca7369b76bb557050235931797d69676e2df4ed1b415e1e001342cdb\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://e22731e0a4c28b54b8b3aaaee54a6cb942d95a335684adc4de73c3bd3dec582f\",\"dweb:/ipfs/Qmao3kekXG6cdy2t6htxVjrki5RYw3JDtqBrTGfMvTW5MC\"]},\"contracts/libraries/Client.sol\":{\"keccak256\":\"0xf2616f59db15ba0493e4ce3514ea0655cbc9b65ee754e7fc012fe19752659574\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://3ebc41940d13751005c195f743f5f22cc1e7b98f6d72cc10116b4853b5ac9837\",\"dweb:/ipfs/QmNweYHQHsTLWFa9cy8XJgxFRgH97XLAGxPw3k8diwrTj6\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OnlyOffRamp"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "struct Client.Any2EVMMessage",
+              "name": "message",
+              "type": "tuple",
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "messageId",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "sourceChainSelector",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "sender",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "data",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "struct Client.EVMTokenAmount[]",
+                  "name": "destTokenAmounts",
+                  "type": "tuple[]",
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "token",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "amount",
+                      "type": "uint256"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "internalType": "uint16",
+              "name": "gasForCallExactCheck",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint256",
+              "name": "gasLimit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "routeMessage",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "success",
+              "type": "bool"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)": {
+            "details": "if the receiver is a contracts that signals support for CCIP execution through EIP-165. the contract is called. If not, only tokens are transferred.",
+            "params": {
+              "gasForCallExactCheck": "of params for exec",
+              "gasLimit": "set of params for exec",
+              "message": "Client.Any2EVMMessage struct.",
+              "receiver": "set of params for exec"
+            },
+            "returns": {
+              "success": "A boolean value indicating whether the ccip message was received without errors."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)": {
+            "notice": "Route the message to its intended receiver contract."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 30000
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "compilationTarget": {
+        "contracts/interfaces/IRouter.sol": "IRouter"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/interfaces/IRouter.sol": {
+        "keccak256": "0x6bde62bdca7369b76bb557050235931797d69676e2df4ed1b415e1e001342cdb",
+        "urls": [
+          "bzz-raw://e22731e0a4c28b54b8b3aaaee54a6cb942d95a335684adc4de73c3bd3dec582f",
+          "dweb:/ipfs/Qmao3kekXG6cdy2t6htxVjrki5RYw3JDtqBrTGfMvTW5MC"
+        ],
+        "license": "BUSL-1.1"
+      },
+      "contracts/libraries/Client.sol": {
+        "keccak256": "0xf2616f59db15ba0493e4ce3514ea0655cbc9b65ee754e7fc012fe19752659574",
+        "urls": [
+          "bzz-raw://3ebc41940d13751005c195f743f5f22cc1e7b98f6d72cc10116b4853b5ac9837",
+          "dweb:/ipfs/QmNweYHQHsTLWFa9cy8XJgxFRgH97XLAGxPw3k8diwrTj6"
+        ],
+        "license": "BUSL-1.1"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/interfaces/IRouter.sol",
+    "id": 5464,
+    "exportedSymbols": {
+      "Client": [
+        5668
+      ],
+      "IRouter": [
+        5463
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:832:18",
+    "nodes": [
+      {
+        "id": 5443,
+        "nodeType": "PragmaDirective",
+        "src": "37:23:18",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5445,
+        "nodeType": "ImportDirective",
+        "src": "62:47:18",
+        "nodes": [],
+        "absolutePath": "contracts/libraries/Client.sol",
+        "file": "../libraries/Client.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 5464,
+        "sourceUnit": 5669,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 5444,
+              "name": "Client",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 5668,
+              "src": "70:6:18",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 5463,
+        "nodeType": "ContractDefinition",
+        "src": "111:757:18",
+        "nodes": [
+          {
+            "id": 5447,
+            "nodeType": "ErrorDefinition",
+            "src": "133:20:18",
+            "nodes": [],
+            "errorSelector": "d2316ede",
+            "name": "OnlyOffRamp",
+            "nameLocation": "139:11:18",
+            "parameters": {
+              "id": 5446,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "150:2:18"
+            }
+          },
+          {
+            "id": 5462,
+            "nodeType": "FunctionDefinition",
+            "src": "687:179:18",
+            "nodes": [],
+            "documentation": {
+              "id": 5448,
+              "nodeType": "StructuredDocumentation",
+              "src": "157:527:18",
+              "text": "@notice Route the message to its intended receiver contract.\n @param message Client.Any2EVMMessage struct.\n @param gasForCallExactCheck of params for exec\n @param gasLimit set of params for exec\n @param receiver set of params for exec\n @dev if the receiver is a contracts that signals support for CCIP execution through EIP-165.\n the contract is called. If not, only tokens are transferred.\n @return success A boolean value indicating whether the ccip message was received without errors."
+            },
+            "functionSelector": "3cf97983",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "routeMessage",
+            "nameLocation": "696:12:18",
+            "parameters": {
+              "id": 5458,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5451,
+                  "mutability": "mutable",
+                  "name": "message",
+                  "nameLocation": "745:7:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5462,
+                  "src": "714:38:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Any2EVMMessage_$5631_calldata_ptr",
+                    "typeString": "struct Client.Any2EVMMessage"
+                  },
+                  "typeName": {
+                    "id": 5450,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 5449,
+                      "name": "Client.Any2EVMMessage",
+                      "nameLocations": [
+                        "714:6:18",
+                        "721:14:18"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 5631,
+                      "src": "714:21:18"
+                    },
+                    "referencedDeclaration": 5631,
+                    "src": "714:21:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Any2EVMMessage_$5631_storage_ptr",
+                      "typeString": "struct Client.Any2EVMMessage"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5453,
+                  "mutability": "mutable",
+                  "name": "gasForCallExactCheck",
+                  "nameLocation": "765:20:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5462,
+                  "src": "758:27:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 5452,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "758:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5455,
+                  "mutability": "mutable",
+                  "name": "gasLimit",
+                  "nameLocation": "799:8:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5462,
+                  "src": "791:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5454,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "791:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5457,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nameLocation": "821:8:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5462,
+                  "src": "813:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5456,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "708:125:18"
+            },
+            "returnParameters": {
+              "id": 5461,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5460,
+                  "mutability": "mutable",
+                  "name": "success",
+                  "nameLocation": "857:7:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5462,
+                  "src": "852:12:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5459,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "852:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "851:14:18"
+            },
+            "scope": 5463,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IRouter",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5463
+        ],
+        "name": "IRouter",
+        "nameLocation": "121:7:18",
+        "scope": 5464,
+        "usedErrors": [
+          5447
+        ]
+      }
+    ],
+    "license": "BUSL-1.1"
+  },
+  "id": 18
+}
