@@ -22,7 +22,8 @@ const config: HardhatUserConfig = {
       celotestnet: process.env.CELOSCAN_API_KEY!,
       calibration: process.env.CALIBRATIONSCAN_API_KEY!,
       mantletestnet: process.env.MANTLETESTNET_API_KEY!,
-      scrolltestnet: process.env.SCROLLTESTNET_API_KEY!
+      scrolltestnet: process.env.SCROLLTESTNET_API_KEY!,
+      lineatestnet: process.env.LINEASCAN_API_KEY!
     },
     customChains: [
       {
@@ -32,7 +33,18 @@ const config: HardhatUserConfig = {
           apiURL: process.env.CELOSCAN_API_KEY!,
           browserURL: "https://alfajores.celoscan.io/"
         }
-      }]
+      }, 
+      {
+        network: "lineatestnet",
+        chainId: 59140,
+        urls: {
+          apiURL: process.env.LINEATESTNET_RPC_URL!,
+          browserURL: "https://goerli.lineascan.build/"
+        }
+      }, 
+    
+    ], 
+      
   },
   networks: {
     goerli: {
@@ -78,7 +90,8 @@ const config: HardhatUserConfig = {
       url: process.env.LINEATESTNET_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 59140,
-    }, calibration: {
+    }, 
+    calibration: {
       url: process.env.CALIBRATION_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 314159,
@@ -88,7 +101,7 @@ const config: HardhatUserConfig = {
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 5001,
     }, 
-    scolltestnet: {
+    scrolltestnet: {
       url: process.env.SCROLLTESTNET_RPC_URL || "",
       accounts: [process.env.PRIVATE_KEY || ""],
       chainId: 534351,
