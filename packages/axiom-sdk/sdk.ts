@@ -35,14 +35,14 @@ const axiom = new Axiom({
 const query = (axiom.query as QueryV2).new();
 
 const txHash =
-  "0xec387f7e4203d20b8b00295d2dc047dccde581f399c9f58822542d202f80317b";
+  "0xb8177c0b680374509d6bcd07a6b415c577f3c1f004c4540cbe48b2fad1eeb780";
 
 const depositEventSchema = getEventSchema("Deposited(address,uint256,uint256)");
 
 console.log("Deposit Event Schema:", depositEventSchema);
 // !!! - this should index into deposits and find the blockheader in the struct
 const senderQuery = buildReceiptSubquery(txHash)
-  .log(1) // event
+  .log(0) // event
   .topic(1) // event sender
   .eventSchema(depositEventSchema);
 
@@ -51,7 +51,7 @@ console.log("Appending Receipt Subquery:", senderQuery);
 query.appendDataSubquery(senderQuery);
 
 const amountSubQuery = buildReceiptSubquery(txHash)
-  .log(1) // event
+  .log(0) // event
   .topic(2) // amount field
   .eventSchema(depositEventSchema);
 
@@ -59,14 +59,14 @@ console.log("Appending Receipt Subquery:", amountSubQuery);
 query.appendDataSubquery(amountSubQuery);
 
 const chainIdQuery = buildReceiptSubquery(txHash)
-  .log(1) // event
+  .log(0) // event
   .topic(3) // chainid field
   .eventSchema(depositEventSchema);
 
 console.log("Appending Receipt Subquery:", chainIdQuery);
 query.appendDataSubquery(chainIdQuery);
 
-const exampleClientAddr = "0xF4b4835e929DA5AB06579a81A817Ef8a3Bc7Bf58";
+const exampleClientAddr = "0x4584B65aa36E2D45dDe5a48179745E24D50c8469";
 const callback: AxiomV2Callback = {
   target: exampleClientAddr,
   extraData: bytes32(0),

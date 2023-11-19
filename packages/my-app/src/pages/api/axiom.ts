@@ -19,7 +19,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   // Extract 'hash' from query parameters
-  const { hash } = req.query;
+  const { hash, dest } = req.query;
   const secretKey = process.env.PRIVATE_KEY;
   const NODE_URL = process.env.ETHEREUM_GOERLI_RPC_URL;
 
@@ -28,9 +28,16 @@ export default async function handler(
     return;
   }
 
+  if (!dest || Array.isArray(dest)) {
+    res.status(500).json({ message: "Missing destination", success: false });
+    return;
+  }
+
   if (!NODE_URL) {
     return res.status(500).json({ message: "Missing NODE_URL", success: false });
   }
+
+  
 
   // Ensure 'hash' is a string
   const hashString = Array.isArray(hash) ? hash[0] : hash;
@@ -53,7 +60,7 @@ export default async function handler(
   const query = (axiom.query as QueryV2).new();
   const depositEventSchema = getEventSchema("Deposited(address,uint256,uint256)");
   const senderQuery = buildReceiptSubquery(txHash)
-  .log(1) // event
+  .log(0) // event
   .topic(1) // event sender
   .eventSchema(depositEventSchema);
 
@@ -62,7 +69,7 @@ console.log("Appending Receipt Subquery:", senderQuery);
 query.appendDataSubquery(senderQuery);
 
 const amountSubQuery = buildReceiptSubquery(txHash)
-  .log(1) // event
+  .log(0) // event
   .topic(2) // amount field
   .eventSchema(depositEventSchema);
 
@@ -70,14 +77,16 @@ console.log("Appending Receipt Subquery:", amountSubQuery);
 query.appendDataSubquery(amountSubQuery);
 
 const chainIdQuery = buildReceiptSubquery(txHash)
-  .log(1) // event
+  .log(0) // event
   .topic(3) // chainid field
   .eventSchema(depositEventSchema);
 
 console.log("Appending Receipt Subquery:", chainIdQuery);
 query.appendDataSubquery(chainIdQuery)
 
-const exampleClientAddr = "0xF4b4835e929DA5AB06579a81A817Ef8a3Bc7Bf58";
+console.log("DEST", dest);
+
+const exampleClientAddr = dest;
 const callback: AxiomV2Callback = {
   target: exampleClientAddr,
   extraData: bytes32(0),
@@ -96,6 +105,8 @@ console.log("Query built with the following params:", builtQuery);
     "Sending a Query to AxiomV2QueryMock with payment amount (wei):",
     paymentAmt
   );
+  const schemaID = query.getDataQueryHash();
+  console.log(schemaID)
 
   const queryId = await query.sendOnchainQuery(
     paymentAmt,

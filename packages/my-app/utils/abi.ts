@@ -90,6 +90,19 @@ export const GATEWAY_ABI = [
     inputs: [
       {
         internalType: "uint256",
+        name: "destinationChainId",
+        type: "uint256",
+      },
+    ],
+    name: "depositCapitalETH",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "amount",
         type: "uint256",
       },
@@ -107,6 +120,19 @@ export const GATEWAY_ABI = [
     name: "depositJustForTesting",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "destinationChainId",
+        type: "uint256",
+      },
+    ],
+    name: "depositJustForTestingETH",
+    outputs: [],
+    stateMutability: "payable",
     type: "function",
   },
   {

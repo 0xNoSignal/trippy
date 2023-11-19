@@ -1,5 +1,9 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { MenuList, MenuListItem, Separator, styleReset } from 'react95';
+// pick a theme of your choice
+import original from 'react95/dist/themes/original';
 
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -27,9 +31,12 @@ createWeb3Modal({ wagmiConfig, projectId, chains });
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
+          <ThemeProvider theme={original}>
+
       <WagmiConfig config={wagmiConfig}>
         <Component {...pageProps} />
       </WagmiConfig>
+      </ThemeProvider>
     </ChakraProvider>
   );
 }
