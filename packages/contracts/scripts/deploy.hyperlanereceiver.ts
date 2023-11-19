@@ -20,6 +20,8 @@ const main = async function () {
     HyperlaneMessageReceiverargs = [zkEVMTestnet.HyperlaneInbox]
   } else if (chainId == 44787) {
     HyperlaneMessageReceiverargs = [celotestnet.HyperlaneMailbox]
+  } else {
+    HyperlaneMessageReceiverargs = [ethers.ZeroAddress]
   }
 
   const HyperlaneMessageReceiver = await ethers.deployContract(
