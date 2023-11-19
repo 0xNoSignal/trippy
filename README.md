@@ -4,7 +4,6 @@ Trippy is a way to send Ethereum data that is verified in ZK to be included in a
 This enables the ability to access proven Ethereum state with a trust assumption on the oracle. 
 
 ![image](https://github.com/0xNoSignal/trippy/assets/75167060/036b8f13-4a81-46d5-a7eb-2407deb7a200)
-![image](https://github.com/0xNoSignal/trippy/assets/75167060/374fb4ed-1933-4a98-bf55-5202ce800d68)
 
 # Deployments 
 goerli gateway 0xFB9821782136C1D8D436DfF753011d9946eF4BCd
@@ -24,3 +23,5 @@ Receivers:
 5. mumbai receiver: 0x28B852E5c47331054073b0892338e7e97D59834b
 6. Arbitrum goerli receiver: 0x5c6602be3b6684bbDf2D13caA1f9541d83C35812
 7. celo goerli receiver: 0x14713e1c4A714F4b75af6087533d412088C6B352
+
+![image](https://github.com/0xNoSignal/trippy/assets/75167060/374fb4ed-1933-4a98-bf55-5202ce800d68)
