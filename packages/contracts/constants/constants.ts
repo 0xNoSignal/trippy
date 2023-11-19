@@ -44,6 +44,7 @@ export const arbygoerli = {
   chainId: "421613",
   LINK: "0x32d5D5978905d9c6c2D4C417F0E06Fe768a4FB5a",
   WETH: "0x32d5D5978905d9c6c2D4C417F0E06Fe768a4FB5a",
+  MsgReceiver: "0x5c6602be3b6684bbDf2D13caA1f9541d83C35812"
 };
 
 export const base = {
