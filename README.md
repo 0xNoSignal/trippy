@@ -24,4 +24,18 @@ Receivers:
 6. Arbitrum goerli receiver: 0x5c6602be3b6684bbDf2D13caA1f9541d83C35812
 7. celo goerli receiver: 0x14713e1c4A714F4b75af6087533d412088C6B352
 
+# BlockScanners 
+
+Polygon zkEVM Testnet:
+- https://explorer.axiom.xyz/v2/goerli/mock/query/46386219382236011359758875404335934356564264936796304274508124830050244183
+- https://explorer.hyperlane.xyz/message/0x24b643a31dc9804b67c9d90994e796aa360c3f5495b2b6cacdc2c3bbaabd42f6
+
+Op Goerli:
+- https://explorer.axiom.xyz/v2/goerli/mock/query/29554840718923891974055891284721567494700336873792680544362523788217908881522
+- https://explorer.hyperlane.xyz/message/0xa48c1dda9fd7e3edf065fafdf02168502565e79537bcd831720fe0a939bb7253
+
+Base Goerli:
+- https://explorer.axiom.xyz/v2/goerli/mock/query/46993079810518358833801851927777730680535707051594678625592920655284980750819
+- https://explorer.hyperlane.xyz/message/0x44ca70d9ecbdc96e2b97a40145946e91b6fb94375a996183f188ec14f33c9cf8
+
 ![image](https://github.com/0xNoSignal/trippy/assets/75167060/374fb4ed-1933-4a98-bf55-5202ce800d68)
